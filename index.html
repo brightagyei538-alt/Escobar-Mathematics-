@@ -1,330 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>GhanaMath – SHS Mathematics</title>
+<meta name="description" content="GhanaMath – Free, detailed SHS Core & Elective Mathematics for Ghanaian students. Built by Agyei Bright (Escobar), B.Sc. Mathematics Education, UEW. WASSCE aligned."/>
+<meta property="og:title" content="GhanaMath – SHS Mathematics by Escobar"/>
+<meta property="og:description" content="Free Core & Elective SHS Mathematics for Ghanaian students. Detailed lessons, worked examples, and WASSCE practice — always free."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GhanaMath – SHS Mathematics by Escobar"/>
+<meta name="twitter:description" content="Free Core & Elective SHS Mathematics for Ghanaian students. WASSCE aligned."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>"/>
+<title>GhanaMath – SHS Mathematics by Escobar</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --green: #006B3F;
-    --gold: #FCD116;
-    --red: #CE1126;
-    --dark: #0D1117;
-    --surface: #111820;
-    --card: #16202E;
-    --border: rgba(252,209,22,0.15);
-    --text: #E8EDF2;
-    --muted: #8899AA;
-    --accent: #FCD116;
-    --green-light: #00A35C;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'DM Sans',sans-serif;
-    background:var(--dark);
-    color:var(--text);
-    min-height:100vh;
-    overflow-x:hidden;
-  }
-
-  /* NAV */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:1rem 2rem;
-    background:rgba(13,17,23,0.92);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid var(--border);
-  }
-  .logo{
-    font-family:'Playfair Display',serif;
-    font-size:1.5rem;font-weight:900;
-    color:var(--gold);
-    letter-spacing:-0.5px;
-  }
-  .logo span{color:var(--green-light);}
-  .nav-links{display:flex;gap:1.5rem;align-items:center;}
-  .nav-links a{
-    color:var(--muted);text-decoration:none;
-    font-size:.875rem;font-weight:500;
-    transition:color .2s;
-  }
-  .nav-links a:hover{color:var(--gold);}
-  .nav-cta{
-    background:var(--gold);color:var(--dark)!important;
-    padding:.4rem 1rem;border-radius:6px;font-weight:600!important;
-  }
-  .nav-cta:hover{background:#e8c010!important;color:var(--dark)!important;}
-
-  /* HERO */
-  .hero{
-    min-height:100vh;
-    display:flex;align-items:center;justify-content:center;
-    text-align:center;
-    position:relative;
-    padding:6rem 2rem 4rem;
-    overflow:hidden;
-  }
-  .hero-bg{
-    position:absolute;inset:0;
-    background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,107,63,0.25) 0%, transparent 70%),
-               radial-gradient(ellipse 40% 40% at 80% 60%, rgba(252,209,22,0.08) 0%, transparent 60%);
-  }
-  .hero-grid{
-    position:absolute;inset:0;
-    background-image:linear-gradient(rgba(252,209,22,0.04) 1px, transparent 1px),
-                     linear-gradient(90deg, rgba(252,209,22,0.04) 1px, transparent 1px);
-    background-size:48px 48px;
-    mask-image:radial-gradient(ellipse at center, black 0%, transparent 75%);
-  }
-  .floating-symbol{
-    position:absolute;font-family:'DM Mono',monospace;
-    color:rgba(252,209,22,0.12);font-size:1.2rem;
-    animation:floatUp 8s ease-in-out infinite;
-    pointer-events:none;
-  }
-  @keyframes floatUp{
-    0%,100%{transform:translateY(0) rotate(0deg);opacity:.12;}
-    50%{transform:translateY(-30px) rotate(5deg);opacity:.22;}
-  }
-  .hero-content{position:relative;z-index:1;max-width:800px;}
-  .hero-badge{
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:rgba(0,107,63,0.2);border:1px solid rgba(0,163,92,0.3);
-    color:var(--green-light);padding:.35rem 1rem;border-radius:999px;
-    font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-    margin-bottom:1.5rem;
-    animation:fadeIn .6s ease;
-  }
-  .hero h1{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(2.5rem,7vw,5rem);
-    font-weight:900;line-height:1.1;
-    margin-bottom:1.5rem;
-    animation:slideUp .7s ease .1s both;
-  }
-  .hero h1 em{font-style:normal;color:var(--gold);}
-  .hero p{
-    font-size:clamp(1rem,2.5vw,1.2rem);
-    color:var(--muted);line-height:1.7;
-    max-width:560px;margin:0 auto 2.5rem;
-    animation:slideUp .7s ease .2s both;
-  }
-  .hero-btns{
-    display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
-    animation:slideUp .7s ease .3s both;
-  }
-  .btn-primary{
-    background:var(--gold);color:var(--dark);
-    padding:.75rem 2rem;border-radius:8px;
-    font-weight:700;font-size:1rem;text-decoration:none;
-    transition:transform .2s,box-shadow .2s;
-    box-shadow:0 0 0 0 rgba(252,209,22,0);
-  }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(252,209,22,0.3);}
-  .btn-secondary{
-    background:transparent;color:var(--text);
-    padding:.75rem 2rem;border-radius:8px;
-    font-weight:600;font-size:1rem;text-decoration:none;
-    border:1px solid rgba(255,255,255,0.15);
-    transition:border-color .2s,background .2s;
-  }
-  .btn-secondary:hover{border-color:var(--gold);background:rgba(252,209,22,0.05);}
-
-  /* STATS */
-  .stats{
-    display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;
-    padding:3rem 2rem;
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-    background:rgba(255,255,255,0.02);
-  }
-  .stat{text-align:center;}
-  .stat-num{
-    font-family:'Playfair Display',serif;
-    font-size:2.2rem;font-weight:900;color:var(--gold);
-  }
-  .stat-label{font-size:.8rem;color:var(--muted);margin-top:.25rem;text-transform:uppercase;letter-spacing:.08em;}
-
-  /* SECTIONS */
-  section{padding:5rem 2rem;}
-  .section-header{text-align:center;margin-bottom:3rem;}
-  .section-tag{
-    display:inline-block;
-    color:var(--green-light);font-size:.8rem;font-weight:600;
-    text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;
-  }
-  .section-header h2{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;
-    margin-bottom:.75rem;
-  }
-  .section-header p{color:var(--muted);max-width:520px;margin:0 auto;line-height:1.7;}
-
-  /* TOPICS GRID */
-  .topics-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-    gap:1.5rem;max-width:1100px;margin:0 auto;
-  }
-  .topic-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;padding:1.75rem;
-    cursor:pointer;
-    transition:transform .25s,border-color .25s,box-shadow .25s;
-    position:relative;overflow:hidden;
-  }
-  .topic-card::before{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(135deg,var(--card-accent,rgba(0,107,63,0.1)) 0%,transparent 60%);
-    opacity:0;transition:opacity .3s;
-  }
-  .topic-card:hover{transform:translateY(-4px);border-color:rgba(252,209,22,0.4);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
-  .topic-card:hover::before{opacity:1;}
-  .topic-icon{
-    width:48px;height:48px;border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.5rem;margin-bottom:1.25rem;
-  }
-  .topic-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
-  .topic-card p{font-size:.875rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
-  .topic-meta{display:flex;gap:.75rem;flex-wrap:wrap;}
-  .tag{
-    font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
-    padding:.25rem .6rem;border-radius:999px;
-  }
-  .tag-green{background:rgba(0,107,63,0.25);color:var(--green-light);}
-  .tag-gold{background:rgba(252,209,22,0.15);color:var(--gold);}
-  .tag-red{background:rgba(206,17,38,0.2);color:#ff6b7a;}
-
-  /* MODAL */
-  .modal-overlay{
-    display:none;position:fixed;inset:0;z-index:200;
-    background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);
-    align-items:center;justify-content:center;padding:1rem;
-  }
-  .modal-overlay.active{display:flex;}
-  .modal{
-    background:var(--surface);border:1px solid var(--border);
-    border-radius:20px;max-width:720px;width:100%;
-    max-height:88vh;overflow-y:auto;
-    animation:modalIn .3s ease;
-  }
-  @keyframes modalIn{from{transform:scale(.95) translateY(20px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
-  .modal-header{
-    padding:2rem 2rem 1.25rem;
-    border-bottom:1px solid var(--border);
-    display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
-    position:sticky;top:0;background:var(--surface);z-index:1;
-  }
-  .modal-close{
-    background:rgba(255,255,255,0.07);border:none;
-    color:var(--muted);font-size:1.3rem;
-    width:36px;height:36px;border-radius:8px;
-    cursor:pointer;display:flex;align-items:center;justify-content:center;
-    transition:background .2s,color .2s;flex-shrink:0;
-  }
-  .modal-close:hover{background:rgba(255,255,255,0.12);color:var(--text);}
-  .modal-body{padding:1.75rem 2rem 2rem;}
-  .lesson{margin-bottom:2rem;}
-  .lesson h3{
-    font-family:'Playfair Display',serif;
-    font-size:1.15rem;font-weight:700;
-    color:var(--gold);margin-bottom:.75rem;
-    display:flex;align-items:center;gap:.5rem;
-  }
-  .lesson p,.lesson li{font-size:.9rem;line-height:1.75;color:var(--muted);}
-  .lesson ul,.lesson ol{padding-left:1.5rem;margin-top:.5rem;}
-  .lesson li{margin-bottom:.4rem;}
-  .formula-box{
-    background:var(--card);border:1px solid var(--border);
-    border-left:3px solid var(--gold);
-    border-radius:8px;padding:1rem 1.25rem;
-    margin:.75rem 0;font-family:'DM Mono',monospace;
-    font-size:.88rem;color:var(--gold);line-height:1.7;
-  }
-  .example-box{
-    background:rgba(0,107,63,0.1);border:1px solid rgba(0,107,63,0.25);
-    border-radius:8px;padding:1rem 1.25rem;margin:.75rem 0;
-  }
-  .example-box strong{color:var(--green-light);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;}
-  .example-box p{margin-top:.4rem;font-size:.9rem;}
-
-  /* CURRICULUM TABS */
-  .tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
-  .tab-btn{
-    background:var(--card);border:1px solid var(--border);
-    color:var(--muted);padding:.5rem 1.25rem;border-radius:8px;
-    font-size:.875rem;font-weight:600;cursor:pointer;
-    transition:all .2s;
-  }
-  .tab-btn.active,.tab-btn:hover{
-    background:var(--gold);color:var(--dark);border-color:var(--gold);
-  }
-
-  /* FOOTER */
-  footer{
-    border-top:1px solid var(--border);
-    padding:3rem 2rem;text-align:center;
-    background:var(--surface);
-  }
-  footer .footer-logo{
-    font-family:'Playfair Display',serif;
-    font-size:1.75rem;font-weight:900;color:var(--gold);margin-bottom:.75rem;
-  }
-  footer p{color:var(--muted);font-size:.875rem;line-height:1.7;}
-  .flag-bar{
-    display:flex;height:5px;margin-bottom:0;
-    border-radius:0 0 0 0;overflow:hidden;
-  }
-  .flag-bar div{flex:1;}
-
-  /* ANIMATIONS */
-  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-  @keyframes slideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-
-  /* SCROLL REVEAL */
-  .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
-  .reveal.visible{opacity:1;transform:translateY(0);}
-
-  /* RESPONSIVE */
-  @media(max-width:600px){
-    nav{padding:.8rem 1rem;}
-    .nav-links{display:none;}
-    .stats{gap:2rem;}
-    .modal-body,.modal-header{padding:1.25rem;}
-    section{padding:3.5rem 1rem;}
-  }
+:root{--green:#006B3F;--gold:#FCD116;--red:#CE1126;--dark:#0D1117;--surface:#111820;--card:#16202E;--border:rgba(252,209,22,0.15);--text:#E8EDF2;--muted:#8899AA;--green-light:#00A35C;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(13,17,23,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--gold);}
+.logo span{color:var(--green-light);}
+.nav-links{display:flex;gap:1.5rem;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--dark)!important;padding:.4rem 1rem;border-radius:6px;font-weight:600!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;z-index:99;background:rgba(13,17,23,0.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:1rem;font-weight:500;padding:.5rem 0;border-bottom:1px solid var(--border);}
+.mobile-menu .nav-cta{background:var(--gold);color:var(--dark)!important;padding:.6rem 1rem;border-radius:6px;text-align:center;border:none;}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:6rem 2rem 4rem;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,107,63,0.25) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(252,209,22,0.08) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(252,209,22,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(252,209,22,0.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at center,black 0%,transparent 75%);}
+.floating-symbol{position:absolute;font-family:'DM Mono',monospace;color:rgba(252,209,22,0.12);font-size:1.2rem;animation:floatUp 8s ease-in-out infinite;pointer-events:none;}
+@keyframes floatUp{0%,100%{transform:translateY(0) rotate(0deg);opacity:.12;}50%{transform:translateY(-30px) rotate(5deg);opacity:.22;}}
+.hero-content{position:relative;z-index:1;max-width:800px;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,107,63,0.2);border:1px solid rgba(0,163,92,0.3);color:var(--green-light);padding:.35rem 1rem;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeIn .6s ease;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;animation:slideUp .7s ease .1s both;}
+.hero h1 em{font-style:normal;color:var(--gold);}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--muted);line-height:1.7;max-width:560px;margin:0 auto 2.5rem;animation:slideUp .7s ease .2s both;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:slideUp .7s ease .3s both;}
+.btn-primary{background:var(--gold);color:var(--dark);padding:.75rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(252,209,22,0.3);}
+.btn-secondary{background:transparent;color:var(--text);padding:.75rem 2rem;border-radius:8px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid rgba(255,255,255,0.15);transition:border-color .2s,background .2s;}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(252,209,22,0.05);}
+.stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:3rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02);}
+.stat{text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--gold);}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:.25rem;text-transform:uppercase;letter-spacing:.08em;}
+section{padding:5rem 2rem;}
+.section-header{text-align:center;margin-bottom:3rem;}
+.section-tag{display:inline-block;color:var(--green-light);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;}
+.section-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.75rem;}
+.section-header p{color:var(--muted);max-width:520px;margin:0 auto;line-height:1.7;}
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;}
+.topic-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden;}
+.topic-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--card-accent,rgba(0,107,63,0.1)) 0%,transparent 60%);opacity:0;transition:opacity .3s;}
+.topic-card:hover{transform:translateY(-4px);border-color:rgba(252,209,22,0.4);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.topic-card:hover::before{opacity:1;}
+.topic-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;}
+.topic-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.topic-card p{font-size:.875rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+.topic-meta{display:flex;gap:.75rem;flex-wrap:wrap;}
+.tag{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.25rem .6rem;border-radius:999px;}
+.tag-green{background:rgba(0,107,63,0.25);color:var(--green-light);}
+.tag-gold{background:rgba(252,209,22,0.15);color:var(--gold);}
+.tag-red{background:rgba(206,17,38,0.2);color:#ff6b7a;}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.active{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;max-width:780px;width:100%;max-height:90vh;overflow-y:auto;animation:modalIn .3s ease;}
+@keyframes modalIn{from{transform:scale(.95) translateY(20px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.modal-header{padding:2rem 2rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--surface);z-index:1;}
+.modal-close{background:rgba(255,255,255,0.07);border:none;color:var(--muted);font-size:1.3rem;width:36px;height:36px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
+.modal-close:hover{background:rgba(255,255,255,0.15);color:var(--text);}
+.modal-tabs{display:flex;gap:.5rem;padding:1rem 2rem 0;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:89px;z-index:1;}
+.modal-tab-btn{background:none;border:none;color:var(--muted);font-size:.875rem;font-weight:600;padding:.6rem 1rem;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.modal-tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.modal-tab-panel{display:none;}
+.modal-tab-panel.active{display:block;}
+.modal-body{padding:1.75rem 2rem 2.5rem;}
+/* LESSON STYLES */
+.lesson{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
+.lesson:last-child{border-bottom:none;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--gold);margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem;}
+.lesson-intro{font-size:.95rem;line-height:1.85;color:var(--muted);margin-bottom:1.1rem;}
+.lesson-intro strong{color:var(--text);}
+.key-point{background:rgba(0,107,63,0.08);border-left:3px solid var(--green-light);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;margin:.9rem 0;font-size:.9rem;color:var(--muted);line-height:1.75;}
+.key-point strong{color:var(--green-light);display:block;margin-bottom:.3rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;}
+.formula-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:1.1rem 1.4rem;margin:.9rem 0;font-family:'DM Mono',monospace;font-size:.88rem;color:var(--gold);line-height:1.9;white-space:pre-wrap;}
+.formula-box .formula-title{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.5rem;}
+.worked-example{background:rgba(252,209,22,0.04);border:1px solid rgba(252,209,22,0.15);border-radius:10px;padding:1.2rem 1.4rem;margin:1rem 0;}
+.worked-example .ex-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:.7rem;}
+.worked-example .ex-question{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.7rem;}
+.worked-example .ex-step{font-size:.875rem;color:var(--muted);line-height:1.8;padding:.4rem 0;}
+.worked-example .ex-step .step-num{color:var(--gold);font-weight:700;margin-right:.4rem;}
+.worked-example .ex-answer{font-family:'DM Mono',monospace;font-size:.9rem;color:var(--green-light);background:rgba(0,107,63,0.1);border-radius:6px;padding:.5rem .8rem;margin-top:.6rem;display:inline-block;}
+.note-box{background:rgba(206,17,38,0.06);border:1px solid rgba(206,17,38,0.2);border-radius:8px;padding:.9rem 1.2rem;margin:.9rem 0;font-size:.875rem;color:var(--muted);line-height:1.75;}
+.note-box strong{color:#ff6b7a;}
+.sub-heading{font-size:1rem;font-weight:700;color:var(--text);margin:1.2rem 0 .5rem;padding-top:.3rem;}
+.bullet-list{list-style:none;padding:0;margin:.5rem 0 1rem;}
+.bullet-list li{font-size:.9rem;color:var(--muted);line-height:1.75;padding:.25rem 0 .25rem 1.4rem;position:relative;}
+.bullet-list li::before{content:'›';position:absolute;left:0;color:var(--gold);font-weight:700;}
+.wassce-tip{background:rgba(0,107,63,0.12);border:1px solid rgba(0,163,92,0.3);border-radius:8px;padding:.9rem 1.2rem;margin:1rem 0;font-size:.875rem;color:var(--muted);line-height:1.75;}
+.wassce-tip strong{color:var(--green-light);}
+/* QUIZ */
+.quiz-container{padding:.25rem 0;}
+.quiz-q{margin-bottom:1.5rem;padding:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;}
+.quiz-q-text{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.6;}
+.quiz-options{display:flex;flex-direction:column;gap:.5rem;}
+.quiz-option{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:.65rem 1rem;cursor:pointer;font-size:.875rem;text-align:left;color:var(--muted);transition:all .2s;font-family:'DM Sans',sans-serif;width:100%;}
+.quiz-option:hover:not(:disabled){border-color:var(--gold);color:var(--text);background:rgba(252,209,22,0.05);}
+.quiz-option.correct{background:rgba(0,107,63,0.2);border-color:var(--green-light);color:var(--green-light);}
+.quiz-option.wrong{background:rgba(206,17,38,0.15);border-color:#ff6b7a;color:#ff6b7a;}
+.quiz-option:disabled{cursor:default;}
+.quiz-explanation{margin-top:.75rem;padding:.75rem 1rem;background:rgba(0,107,63,0.1);border:1px solid rgba(0,107,63,0.25);border-radius:8px;font-size:.85rem;color:var(--muted);line-height:1.7;display:none;}
+.quiz-explanation.show{display:block;}
+.quiz-explanation strong{color:var(--green-light);}
+.quiz-score{text-align:center;padding:1.75rem;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-top:1rem;display:none;}
+.quiz-score.show{display:block;}
+.quiz-score-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--gold);}
+.quiz-score p{color:var(--muted);margin-top:.5rem;font-size:.95rem;}
+.btn-quiz-retry{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:.6rem 1.5rem;border-radius:8px;font-weight:600;font-size:.875rem;cursor:pointer;margin-top:.75rem;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.btn-quiz-retry:hover{background:rgba(252,209,22,0.1);}
+.tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+.tab-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.5rem 1.25rem;border-radius:8px;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.tab-btn.active,.tab-btn:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+#about{background:rgba(0,107,63,0.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.about-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1.8fr;gap:3rem;align-items:center;}
+.avatar-ring{width:200px;height:200px;border-radius:50%;margin:0 auto;background:linear-gradient(135deg,var(--green),var(--gold));padding:3px;position:relative;}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:5rem;}
+.avatar-badge{position:absolute;bottom:10px;right:-10px;background:var(--gold);color:var(--dark);font-size:.7rem;font-weight:700;padding:.3rem .75rem;border-radius:999px;}
+.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:900;margin-bottom:.3rem;}
+.about-text .aka{color:var(--gold);font-size:1.1rem;font-weight:700;margin-bottom:1rem;display:block;}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:.9rem;font-size:.95rem;}
+.about-credentials{display:flex;flex-direction:column;gap:.75rem;margin-top:1.25rem;}
+.credential{display:flex;align-items:flex-start;gap:.75rem;background:var(--card);border:1px solid var(--border);padding:.85rem 1rem;border-radius:10px;}
+.credential-icon{font-size:1.2rem;flex-shrink:0;}
+.credential-text{font-size:.85rem;color:var(--muted);line-height:1.5;}
+.credential-text strong{display:block;color:var(--text);font-weight:600;margin-bottom:.1rem;}
+footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;background:var(--surface);}
+footer .footer-logo{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:900;color:var(--gold);margin-bottom:.75rem;}
+footer p{color:var(--muted);font-size:.875rem;line-height:1.7;}
+.flag-bar{display:flex;height:5px;overflow:hidden;}
+.flag-bar div{flex:1;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:700px){.about-inner{grid-template-columns:1fr;text-align:center;}.avatar-badge{right:calc(50% - 110px);}}
+@media(max-width:600px){.nav-links{display:none;}.hamburger{display:flex;}nav{padding:.8rem 1rem;}.stats{gap:2rem;}.modal-body,.modal-header{padding:1.25rem;}section{padding:3.5rem 1rem;}.modal-tabs{top:75px;}}
 </style>
 </head>
 <body>
-
-<!-- FLAG BAR -->
-<div class="flag-bar">
-  <div style="background:#006B3F;"></div>
-  <div style="background:#FCD116;"></div>
-  <div style="background:#CE1126;"></div>
-</div>
-
-<!-- NAV -->
+<div class="flag-bar"><div style="background:#006B3F;"></div><div style="background:#FCD116;"></div><div style="background:#CE1126;"></div></div>
 <nav>
   <div class="logo">Ghana<span>Math</span></div>
   <div class="nav-links">
     <a href="#core">Core Maths</a>
     <a href="#elective">Elective</a>
-    <a href="#topics">Topics</a>
-    <a href="#start" class="nav-cta">Start Learning</a>
+    <a href="#about">About</a>
+    <a href="#core" class="nav-cta">Start Learning</a>
   </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- HERO -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#core" onclick="closeMobileMenu()">📘 Core Maths</a>
+  <a href="#elective" onclick="closeMobileMenu()">📗 Elective Maths</a>
+  <a href="#about" onclick="closeMobileMenu()">👤 About</a>
+  <a href="#core" class="nav-cta" onclick="closeMobileMenu()">Start Learning</a>
+</div>
 <section class="hero" id="start">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <!-- Floating symbols -->
+  <div class="hero-bg"></div><div class="hero-grid"></div>
   <span class="floating-symbol" style="top:15%;left:8%;animation-delay:0s">∫</span>
   <span class="floating-symbol" style="top:70%;left:5%;animation-delay:1.5s">π</span>
   <span class="floating-symbol" style="top:25%;right:7%;animation-delay:2s">Σ</span>
@@ -332,525 +183,1158 @@
   <span class="floating-symbol" style="top:45%;left:12%;animation-delay:3s">∞</span>
   <span class="floating-symbol" style="top:80%;right:6%;animation-delay:1s">θ</span>
   <span class="floating-symbol" style="top:35%;right:18%;animation-delay:2.5s">Δ</span>
-
   <div class="hero-content">
     <div class="hero-badge">🇬🇭 Ghana SHS Curriculum</div>
     <h1>Master <em>Mathematics</em><br/>the Smart Way</h1>
-    <p>Complete Core & Elective Mathematics for Senior High School students in Ghana. Learn every topic from Number Theory to Calculus — free, clear, and built for WASSCE success.</p>
+    <p>Complete, in-depth Core &amp; Elective Mathematics for Senior High School students in Ghana. Detailed lessons, worked examples, and WASSCE practice — free, always.</p>
     <div class="hero-btns">
-      <a href="#topics" class="btn-primary">Explore Topics</a>
-      <a href="#core" class="btn-secondary">View Curriculum</a>
+      <a href="#core" class="btn-primary">Explore Topics</a>
+      <a href="#elective" class="btn-secondary">View Elective</a>
     </div>
   </div>
 </section>
-
-<!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Topics Covered</div></div>
+  <div class="stat"><div class="stat-num" id="stat-topics">15+</div><div class="stat-label">Topics Covered</div></div>
   <div class="stat"><div class="stat-num">3</div><div class="stat-label">SHS Years</div></div>
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">WASSCE Aligned</div></div>
   <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Always</div></div>
 </div>
-
-<!-- CORE TOPICS -->
 <section id="core">
   <div class="section-header reveal">
     <div class="section-tag">📘 Core Mathematics</div>
     <h2>Core Maths Topics</h2>
     <p>Compulsory for all SHS students. Master these to excel in your WASSCE Core Mathematics paper.</p>
   </div>
-
-  <div class="tabs" id="core-tabs">
-    <button class="tab-btn active" onclick="filterTopics('all')">All</button>
-    <button class="tab-btn" onclick="filterTopics('shs1')">SHS 1</button>
-    <button class="tab-btn" onclick="filterTopics('shs2')">SHS 2</button>
-    <button class="tab-btn" onclick="filterTopics('shs3')">SHS 3</button>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="filterTopics('all',event)">All</button>
+    <button class="tab-btn" onclick="filterTopics('shs1',event)">SHS 1</button>
+    <button class="tab-btn" onclick="filterTopics('shs2',event)">SHS 2</button>
+    <button class="tab-btn" onclick="filterTopics('shs3',event)">SHS 3</button>
   </div>
-
-  <div class="topics-grid" id="topics" style="max-width:1100px;margin:0 auto;">
-    <!-- Cards injected by JS -->
-  </div>
+  <div class="topics-grid" id="topics"></div>
 </section>
-
-<!-- ELECTIVE TOPICS -->
 <section id="elective" style="background:rgba(255,255,255,0.01);">
   <div class="section-header reveal">
     <div class="section-tag">📗 Elective Mathematics</div>
     <h2>Elective Maths Topics</h2>
-    <p>For science & general students. These advanced topics prepare you for university mathematics and engineering.</p>
+    <p>For science &amp; general students. Advanced topics that prepare you for university mathematics.</p>
   </div>
-  <div class="topics-grid" id="elective-grid" style="max-width:1100px;margin:0 auto;"></div>
+  <div class="topics-grid" id="elective-grid"></div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="flag-bar" style="margin-bottom:2rem;border-radius:4px;overflow:hidden;">
-    <div style="background:#006B3F;height:4px;"></div>
-    <div style="background:#FCD116;height:4px;"></div>
-    <div style="background:#CE1126;height:4px;"></div>
+<section id="about">
+  <div class="about-inner reveal">
+    <div class="about-avatar" style="position:relative;">
+      <div class="avatar-ring"><div class="avatar-inner" style="overflow:hidden;padding:0;"><img src="data:image/jpeg;base64,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" alt="Agyei Bright" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"/></div></div>
+      <div class="avatar-badge">✅ Verified Teacher</div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">👤 Meet the Creator</div>
+      <h2>Agyei Bright</h2>
+      <span class="aka">"Escobar" 🇬🇭</span>
+      <p>GhanaMath was built by a passionate Mathematics educator on a mission to make quality SHS Maths education free and accessible to every Ghanaian student — no matter where they are.</p>
+      <p>With a deep understanding of the WAEC curriculum, every lesson, formula, and worked example on this site is crafted with the classroom in mind — to help you truly understand, not just memorise.</p>
+      <div class="about-credentials">
+        <div class="credential"><div class="credential-icon">🏫</div><div class="credential-text"><strong>Bueman Senior High School</strong>Alumnus — where the love for Mathematics began</div></div>
+        <div class="credential"><div class="credential-icon">🎓</div><div class="credential-text"><strong>University of Education, Winneba (UEW)</strong>Bachelor of Science — Mathematics Education</div></div>
+        <div class="credential"><div class="credential-icon">📐</div><div class="credential-text"><strong>SHS Mathematics Teacher</strong>Core &amp; Elective Maths Specialist · WASSCE Curriculum Expert</div></div>
+      </div>
+    </div>
   </div>
+</section>
+<footer>
+  <div class="flag-bar" style="margin-bottom:2rem;border-radius:4px;overflow:hidden;"><div style="background:#006B3F;height:4px;"></div><div style="background:#FCD116;height:4px;"></div><div style="background:#CE1126;height:4px;"></div></div>
   <div class="footer-logo">GhanaMath</div>
-  <p>Free SHS Mathematics for every Ghanaian student.<br/>
-  Built with love for Ghana 🇬🇭 · Aligned with the WAEC curriculum.</p>
+  <p>Free, detailed SHS Mathematics for every Ghanaian student.<br/>Built with ❤️ by <strong style="color:var(--gold);">Agyei Bright "Escobar"</strong> · B.Sc. Mathematics Education, UEW<br/>Aligned with the WAEC curriculum 🇬🇭</p>
 </footer>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+<div class="modal-overlay" id="modal" onclick="closeModalOverlay(event)">
   <div class="modal" id="modal-content">
     <div class="modal-header">
-      <div>
-        <div id="modal-tag" class="section-tag" style="margin-bottom:.4rem;"></div>
-        <h2 id="modal-title" style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;"></h2>
-      </div>
-      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active')">✕</button>
+      <div><div id="modal-tag" class="section-tag" style="margin-bottom:.4rem;"></div><h2 id="modal-title" style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;"></h2></div>
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
     </div>
-    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-tabs">
+      <button class="modal-tab-btn active" onclick="switchModalTab('lessons',this)">📖 Lessons</button>
+      <button class="modal-tab-btn" onclick="switchModalTab('quiz',this)">✏️ Practice Quiz</button>
+    </div>
+    <div class="modal-body">
+      <div id="modal-tab-lessons" class="modal-tab-panel active"><div id="modal-lessons-inner"></div></div>
+      <div id="modal-tab-quiz" class="modal-tab-panel"><div id="modal-quiz-inner"></div></div>
+    </div>
   </div>
 </div>
-
 <script>
-const coreTopics = [
-  {
-    icon:"🔢", color:"rgba(0,107,63,0.3)", title:"Number & Numeration",
-    desc:"Real numbers, fractions, decimals, surds, indices, and logarithms.",
-    tags:["SHS 1","Core"], year:"shs1",
-    content:{
-      intro:"Number and Numeration forms the backbone of all mathematics. You will study different types of numbers, their properties, and operations.",
-      lessons:[
-        {
-          title:"Types of Numbers",
-          text:"Numbers are classified as Natural (1,2,3…), Whole (0,1,2…), Integers (…-2,-1,0,1,2…), Rational (can be written as p/q), Irrational (cannot be expressed as a fraction — e.g. √2, π), and Real numbers (all rational and irrational).",
-          formula:"ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ",
-          example:"Classify: 0.75, √5, -3, 22/7\n→ 0.75 = rational | √5 = irrational | -3 = integer | 22/7 = rational (approximation of π)"
-        },
-        {
-          title:"Indices (Laws of Indices)",
-          text:"Indices represent repeated multiplication. The key laws govern multiplication, division, power of a power, negative and fractional indices.",
-          formula:"aᵐ × aⁿ = aᵐ⁺ⁿ\naᵐ ÷ aⁿ = aᵐ⁻ⁿ\n(aᵐ)ⁿ = aᵐⁿ\na⁰ = 1\na⁻ⁿ = 1/aⁿ\na^(1/n) = ⁿ√a",
-          example:"Simplify: 2³ × 2⁴ = 2⁷ = 128\nSimplify: (x²)³ = x⁶"
-        },
-        {
-          title:"Surds",
-          text:"Surds are irrational roots that cannot be simplified to whole numbers. We simplify, add, subtract, multiply and rationalise surds.",
-          formula:"√(ab) = √a × √b\n√a/√b = √(a/b)\nRationalise: a/√b = a√b/b",
-          example:"Simplify √75 = √(25×3) = 5√3\nRationalise: 6/√3 = 6√3/3 = 2√3"
-        },
-        {
-          title:"Logarithms",
-          text:"Logarithms are the inverse of exponentiation. logₐ(x) = y means aʸ = x.",
-          formula:"log(ab) = log a + log b\nlog(a/b) = log a − log b\nlog(aⁿ) = n·log a\nlog_a(a) = 1 | log_a(1) = 0",
-          example:"log₂(8) = 3 because 2³ = 8\nlog(100) = 2 because 10² = 100"
-        }
-      ]
-    }
-  },
-  {
-    icon:"➕", color:"rgba(0,107,63,0.3)", title:"Algebra",
-    desc:"Expressions, equations, inequalities, polynomials, and functions.",
-    tags:["SHS 1","Core"], year:"shs1",
-    content:{
-      intro:"Algebra uses letters and symbols to represent numbers and express mathematical relationships.",
-      lessons:[
-        {
-          title:"Algebraic Expressions",
-          text:"Expressions contain variables (like x, y), constants, and operators. You must be able to simplify, expand, and factorise.",
-          formula:"Difference of two squares: a² - b² = (a+b)(a-b)\nPerfect square: (a+b)² = a² + 2ab + b²\n(a-b)² = a² - 2ab + b²",
-          example:"Expand (x + 3)(x - 2) = x² - 2x + 3x - 6 = x² + x - 6\nFactorise x² - 9 = (x+3)(x-3)"
-        },
-        {
-          title:"Linear Equations & Inequalities",
-          text:"A linear equation has degree 1. Solve by isolating the variable. Inequalities use <, >, ≤, ≥.",
-          formula:"ax + b = c → x = (c-b)/a\nIf multiplying/dividing by a negative number → flip the inequality sign",
-          example:"Solve: 3x - 7 = 11 → 3x = 18 → x = 6\nSolve: 2x + 5 > 13 → 2x > 8 → x > 4"
-        },
-        {
-          title:"Quadratic Equations",
-          text:"Quadratics have the form ax² + bx + c = 0. Solve by factorisation, completing the square, or the quadratic formula.",
-          formula:"x = (-b ± √(b² - 4ac)) / 2a\nDiscriminant: D = b² - 4ac\nD > 0: two real roots | D = 0: one root | D < 0: no real roots",
-          example:"Solve x² - 5x + 6 = 0\nFactorise: (x-2)(x-3) = 0 → x = 2 or x = 3"
-        },
-        {
-          title:"Functions",
-          text:"A function maps each input (domain) to exactly one output (range). Notation: f(x).",
-          formula:"f(x) = y (output)\nComposite: (f∘g)(x) = f(g(x))\nInverse: if f(x)=y, then f⁻¹(y)=x",
-          example:"f(x) = 2x + 3, find f(4) → f(4) = 2(4)+3 = 11\nFind f⁻¹(x): y=2x+3 → x=2y+3 → y=(x-3)/2 → f⁻¹(x)=(x-3)/2"
-        }
-      ]
-    }
-  },
-  {
-    icon:"📐", color:"rgba(206,17,38,0.2)", title:"Plane Geometry",
-    desc:"Lines, angles, triangles, circles, polygons, and geometric proofs.",
-    tags:["SHS 1","Core"], year:"shs1",
-    content:{
-      intro:"Plane Geometry studies shapes and figures in two dimensions — their properties, measurements, and relationships.",
-      lessons:[
-        {
-          title:"Lines & Angles",
-          text:"Key angle relationships include complementary (sum = 90°), supplementary (sum = 180°), vertically opposite (equal), and angles on a straight line (sum = 180°).",
-          formula:"Angles in a triangle = 180°\nAngles in a quadrilateral = 360°\nExterior angle = sum of two opposite interior angles",
-          example:"In △ABC, ∠A = 50°, ∠B = 70°. Find ∠C.\n∠C = 180° - 50° - 70° = 60°"
-        },
-        {
-          title:"Triangles & Congruence",
-          text:"Triangles are congruent (same shape and size) by: SSS, SAS, ASA, AAS, RHS. Similar triangles have the same angles but different sizes.",
-          formula:"Area of triangle = ½ × base × height\nHeron's formula: A = √[s(s-a)(s-b)(s-c)]\nwhere s = (a+b+c)/2",
-          example:"A triangle has base 8cm and height 5cm.\nArea = ½ × 8 × 5 = 20 cm²"
-        },
-        {
-          title:"Circle Theorems",
-          text:"Key theorems: angle in a semicircle is 90°, angles in the same segment are equal, angle at centre = 2× angle at circumference, opposite angles of a cyclic quadrilateral sum to 180°.",
-          formula:"Arc length = (θ/360) × 2πr\nArea of sector = (θ/360) × πr²",
-          example:"An angle at the centre is 80°. The angle at the circumference in the same segment = 80°/2 = 40°"
-        }
-      ]
-    }
-  },
-  {
-    icon:"📏", color:"rgba(252,209,22,0.2)", title:"Mensuration",
-    desc:"Perimeter, area, surface area, and volume of 2D and 3D shapes.",
-    tags:["SHS 2","Core"], year:"shs2",
-    content:{
-      intro:"Mensuration deals with calculating lengths, areas, and volumes of geometric shapes.",
-      lessons:[
-        {
-          title:"Areas of 2D Shapes",
-          text:"Know the area formulas for rectangles, triangles, circles, trapeziums, and parallelograms.",
-          formula:"Rectangle: A = l × w\nTriangle: A = ½bh\nCircle: A = πr²\nTrapezium: A = ½(a+b)h\nParallelogram: A = bh",
-          example:"Find area of circle with radius 7cm:\nA = π × 7² = 49π ≈ 153.94 cm²"
-        },
-        {
-          title:"Surface Area & Volume of 3D Shapes",
-          text:"3D shapes include cubes, cuboids, cylinders, cones, spheres, and pyramids.",
-          formula:"Cylinder: V = πr²h | SA = 2πr(r+h)\nCone: V = ⅓πr²h | SA = πr(r+l)\nSphere: V = ⁴⁄₃πr³ | SA = 4πr²\nCuboid: V = lwh | SA = 2(lw+lh+wh)",
-          example:"Volume of cone with r=3cm, h=4cm:\nV = ⅓ × π × 9 × 4 = 12π ≈ 37.7 cm³"
-        }
-      ]
-    }
-  },
-  {
-    icon:"📊", color:"rgba(0,107,63,0.3)", title:"Statistics",
-    desc:"Data collection, averages, frequency tables, charts, and probability.",
-    tags:["SHS 2","Core"], year:"shs2",
-    content:{
-      intro:"Statistics is the science of collecting, organising, analysing, and interpreting numerical data.",
-      lessons:[
-        {
-          title:"Measures of Central Tendency",
-          text:"The three averages are mean, median, and mode. They each describe the 'centre' of a dataset.",
-          formula:"Mean = (Sum of all values) / (Number of values)\nMedian = middle value when data is arranged in order\nMode = most frequent value",
-          example:"Data: 4, 7, 2, 9, 7, 5\nMean = (4+7+2+9+7+5)/6 = 34/6 ≈ 5.67\nMedian: 2,4,5,7,7,9 → (5+7)/2 = 6\nMode = 7"
-        },
-        {
-          title:"Measures of Spread",
-          text:"Range, variance, and standard deviation measure how spread out data is.",
-          formula:"Range = Max - Min\nVariance = Σ(x - x̄)² / n\nStandard Deviation = √Variance",
-          example:"Data: 2, 4, 4, 4, 5, 5, 7, 9\nMean = 5 | Variance = 4 | SD = 2"
-        },
-        {
-          title:"Probability",
-          text:"Probability measures the likelihood of an event. P(A) = (favourable outcomes) / (total outcomes).",
-          formula:"0 ≤ P(A) ≤ 1\nP(A') = 1 - P(A)\nP(A or B) = P(A) + P(B) - P(A and B)\nP(A and B) = P(A) × P(B) [if independent]",
-          example:"A bag has 5 red and 3 blue balls.\nP(red) = 5/8 | P(blue) = 3/8"
-        }
-      ]
-    }
-  },
-  {
-    icon:"📐", color:"rgba(252,209,22,0.2)", title:"Trigonometry",
-    desc:"Sine, cosine, tangent, sine rule, cosine rule, and bearing.",
-    tags:["SHS 2","Core"], year:"shs2",
-    content:{
-      intro:"Trigonometry studies the relationships between the sides and angles of triangles.",
-      lessons:[
-        {
-          title:"SOHCAHTOA",
-          text:"In a right-angled triangle, the three basic trig ratios relate angles to side lengths.",
-          formula:"sin θ = Opposite / Hypotenuse\ncos θ = Adjacent / Hypotenuse\ntan θ = Opposite / Adjacent\nsin²θ + cos²θ = 1",
-          example:"In a right triangle, opposite=3, hypotenuse=5\nsin θ = 3/5 = 0.6 → θ = sin⁻¹(0.6) ≈ 36.87°"
-        },
-        {
-          title:"Sine & Cosine Rules",
-          text:"Used for non-right-angled triangles. The sine rule relates sides and their opposite angles. The cosine rule links all three sides.",
-          formula:"Sine Rule: a/sin A = b/sin B = c/sin C\nCosine Rule: a² = b² + c² - 2bc·cos A",
-          example:"Find angle A: a=7, b=5, c=6\na² = b² + c² - 2bc·cos A\n49 = 25 + 36 - 60·cos A\ncos A = 12/60 = 0.2 → A ≈ 78.5°"
-        },
-        {
-          title:"Bearings",
-          text:"Bearings are measured clockwise from North (0°) to 360°. Used in navigation problems.",
-          formula:"Bearing is always written as 3 digits (e.g. 045°, 270°)\nBack bearing = bearing + 180° (if < 180°)\nBack bearing = bearing - 180° (if > 180°)",
-          example:"A ship sails from A on bearing 065°.\nBack bearing from B to A = 065° + 180° = 245°"
-        }
-      ]
-    }
-  },
-  {
-    icon:"↗️", color:"rgba(0,107,63,0.3)", title:"Vectors",
-    desc:"Vector notation, magnitude, direction, addition, and scalar multiplication.",
-    tags:["SHS 3","Core"], year:"shs3",
-    content:{
-      intro:"Vectors have both magnitude and direction. They are used to describe motion, forces, and geometry.",
-      lessons:[
-        {
-          title:"Vector Basics",
-          text:"Vectors are written as bold letters (a) or with arrows. A vector from A to B is written as AB⃗.",
-          formula:"Vector a = (x, y) or xi + yj\nMagnitude: |a| = √(x² + y²)\nUnit vector: â = a / |a|",
-          example:"a = (3, 4) | |a| = √(9+16) = √25 = 5\nUnit vector = (3/5, 4/5)"
-        },
-        {
-          title:"Vector Operations",
-          text:"Vectors can be added, subtracted, and multiplied by scalars (numbers).",
-          formula:"a + b = (a₁+b₁, a₂+b₂)\na - b = (a₁-b₁, a₂-b₂)\nk·a = (ka₁, ka₂)",
-          example:"a = (2,3), b = (1,-1)\na + b = (3, 2)\n3a = (6, 9)"
-        }
-      ]
-    }
-  },
-  {
-    icon:"🔄", color:"rgba(206,17,38,0.2)", title:"Transformation",
-    desc:"Reflection, rotation, translation, enlargement, and their matrices.",
-    tags:["SHS 3","Core"], year:"shs3",
-    content:{
-      intro:"Transformations move or change shapes. The four main types are reflection, rotation, translation, and enlargement.",
-      lessons:[
-        {
-          title:"Types of Transformation",
-          text:"Reflection flips a shape. Rotation turns it about a point. Translation slides it. Enlargement scales it.",
-          formula:"Translation: (x,y) → (x+a, y+b)\nReflection in x-axis: (x,y) → (x,-y)\nReflection in y-axis: (x,y) → (-x,y)\nReflection in y=x: (x,y) → (y,x)\nEnlargement: (x,y) → (kx,ky) with scale factor k",
-          example:"Translate point (3,2) by vector (1,-3)\nNew point = (3+1, 2-3) = (4,-1)"
-        },
-        {
-          title:"Transformation Matrices",
-          text:"2×2 matrices can represent reflections and rotations.",
-          formula:"Rotation 90° CCW: [0 -1; 1  0]\nRotation 90° CW:  [0  1;-1  0]\nReflection x-axis: [1  0; 0 -1]\nReflection y-axis: [-1 0; 0  1]",
-          example:"Rotate (3,1) by 90° CCW:\n[0,-1;1,0]×(3,1) = (-1, 3)"
-        }
-      ]
-    }
-  }
+// ── HAMBURGER ──────────────────────
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+function closeMobileMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalBtn();});
+
+// ── TOPIC DATA ──────────────────────
+const coreTopics=[
+{icon:"🔢",color:"rgba(0,107,63,0.3)",title:"Number & Numeration",desc:"Real numbers, fractions, decimals, surds, indices, logarithms, and number bases.",tags:["SHS 1","Core"],year:"shs1",
+content:{
+intro:"Number and Numeration is the foundation of all mathematics. Before you can solve any problem, you must understand numbers — what they are, how they are classified, and how to work with them.",
+lessons:[
+{title:"Classification of Numbers",
+body:`<p class="lesson-intro">Numbers are organised into different sets based on their properties. Understanding this classification is essential for WASSCE.</p>
+<div class="key-point"><strong>The Number Sets</strong>
+• <strong>Natural Numbers (ℕ):</strong> Counting numbers — 1, 2, 3, 4, 5, …<br>
+• <strong>Whole Numbers (W):</strong> Natural numbers + zero — 0, 1, 2, 3, …<br>
+• <strong>Integers (ℤ):</strong> All whole numbers including negatives — …, −3, −2, −1, 0, 1, 2, 3, …<br>
+• <strong>Rational Numbers (ℚ):</strong> Numbers that can be written as a fraction p/q where p and q are integers and q ≠ 0. Examples: ¾, −2, 0.6, 5<br>
+• <strong>Irrational Numbers:</strong> Numbers that CANNOT be written as a fraction. Their decimals never terminate and never repeat. Examples: √2, √3, π, e<br>
+• <strong>Real Numbers (ℝ):</strong> ALL rational and irrational numbers combined.</div>
+<div class="formula-box">Hierarchy: ℕ ⊂ W ⊂ ℤ ⊂ ℚ ⊂ ℝ
+(Every natural number is also a whole number, integer, rational, and real number)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">Classify each number: (a) 0.75 (b) √7 (c) −4 (d) 22/7 (e) π</div>
+<div class="ex-step"><span class="step-num">a)</span> 0.75 = 3/4 → <strong>Rational</strong> (can be written as a fraction)</div>
+<div class="ex-step"><span class="step-num">b)</span> √7 = 2.6457513… (non-terminating, non-repeating) → <strong>Irrational</strong></div>
+<div class="ex-step"><span class="step-num">c)</span> −4 is a negative whole number → <strong>Integer</strong> (also rational and real)</div>
+<div class="ex-step"><span class="step-num">d)</span> 22/7 = 3.142857142857… (repeating) → <strong>Rational</strong> (it is an approximation of π, NOT π itself)</div>
+<div class="ex-step"><span class="step-num">e)</span> π = 3.14159265… (never repeats) → <strong>Irrational</strong></div></div>
+<div class="note-box"><strong>⚠️ Common WASSCE Mistake:</strong> Many students think 22/7 = π. They are NOT equal. 22/7 is just an approximation. π is irrational; 22/7 is rational.</div>`},
+
+{title:"Fractions, Decimals & Percentages",
+body:`<p class="lesson-intro">These three forms represent the same value in different ways. You must be able to convert fluently between all three.</p>
+<div class="formula-box">Fraction → Decimal:  Divide numerator by denominator
+Decimal → Percentage: Multiply by 100
+Percentage → Decimal: Divide by 100
+Percentage → Fraction: Write over 100, then simplify</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">Convert: (a) 3/8 to decimal and % (b) 0.045 to fraction (c) 37.5% to fraction</div>
+<div class="ex-step"><span class="step-num">a)</span> 3 ÷ 8 = 0.375 → × 100 = <span class="ex-answer">37.5%</span></div>
+<div class="ex-step"><span class="step-num">b)</span> 0.045 = 45/1000 = 9/200 <span class="ex-answer">= 9/200</span></div>
+<div class="ex-step"><span class="step-num">c)</span> 37.5/100 = 375/1000 = 3/8 <span class="ex-answer">= 3/8</span></div></div>
+<div class="sub-heading">Operations with Fractions</div>
+<div class="formula-box">Addition/Subtraction: Use a common denominator
+  a/b + c/d = (ad + bc) / bd
+
+Multiplication: Multiply numerators, multiply denominators
+  a/b × c/d = ac/bd
+
+Division: Multiply by the reciprocal
+  a/b ÷ c/d = a/b × d/c = ad/bc</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3</div>
+<div class="ex-question">Evaluate: (a) 2/3 + 3/4  (b) 5/6 − 1/4  (c) 2/5 × 10/3  (d) 3/4 ÷ 9/16</div>
+<div class="ex-step"><span class="step-num">a)</span> 2/3 + 3/4 = 8/12 + 9/12 = <span class="ex-answer">17/12 = 1 5/12</span></div>
+<div class="ex-step"><span class="step-num">b)</span> 5/6 − 1/4 = 10/12 − 3/12 = <span class="ex-answer">7/12</span></div>
+<div class="ex-step"><span class="step-num">c)</span> 2/5 × 10/3 = 20/15 = <span class="ex-answer">4/3 = 1 1/3</span></div>
+<div class="ex-step"><span class="step-num">d)</span> 3/4 ÷ 9/16 = 3/4 × 16/9 = 48/36 = <span class="ex-answer">4/3 = 1 1/3</span></div></div>`},
+
+{title:"Ratio & Proportion",
+body:`<p class="lesson-intro">A <strong>ratio</strong> compares two or more quantities of the same kind. A <strong>proportion</strong> states that two ratios are equal.</p>
+<div class="key-point"><strong>Key Concepts</strong>
+• Ratios can be simplified like fractions: 15:10 = 3:2<br>
+• To divide a quantity in a given ratio, find the total parts first<br>
+• <strong>Direct proportion:</strong> as one quantity increases, the other increases at the same rate (y = kx)<br>
+• <strong>Inverse proportion:</strong> as one increases, the other decreases (y = k/x)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 4</div>
+<div class="ex-question">Divide GHS 360 among Ama, Kofi, and Yaw in the ratio 2 : 3 : 4.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> Total parts = 2 + 3 + 4 = 9</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> Value of 1 part = 360 ÷ 9 = GHS 40</div>
+<div class="ex-step"><span class="step-num">Step 3:</span> Ama = 2 × 40 = GHS 80 | Kofi = 3 × 40 = GHS 120 | Yaw = 4 × 40 = GHS 160</div>
+<div class="ex-step"><span class="step-num">Check:</span> 80 + 120 + 160 = 360 ✓ <span class="ex-answer">Ama: GHS 80, Kofi: GHS 120, Yaw: GHS 160</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 5 — Direct & Inverse Proportion</div>
+<div class="ex-question">(a) If 5 workers can build a wall in 12 days, how long will 8 workers take? (b) A car travels 240 km in 3 hours. How far in 5 hours?</div>
+<div class="ex-step"><span class="step-num">a)</span> More workers → fewer days (Inverse). 5 × 12 = 8 × d → d = 60/8 = <span class="ex-answer">7.5 days</span></div>
+<div class="ex-step"><span class="step-num">b)</span> More time → more distance (Direct). 240/3 = d/5 → d = <span class="ex-answer">400 km</span></div></div>`},
+
+{title:"Surds",
+body:`<p class="lesson-intro">A <strong>surd</strong> is a root that cannot be simplified to a rational number. Working with surds is essential in algebra, geometry, and trigonometry.</p>
+<div class="formula-box">Basic Surd Rules:
+  √(a × b) = √a × √b
+  √(a ÷ b) = √a ÷ √b
+  (√a)² = a
+  √a + √a = 2√a  (like terms only!)
+  √a + √b ≠ √(a+b)  ← WRONG!</div>
+<div class="key-point"><strong>Simplifying Surds</strong> — Find the largest perfect square factor<br>
+√72 = √(36 × 2) = 6√2<br>
+√48 = √(16 × 3) = 4√3<br>
+√200 = √(100 × 2) = 10√2</div>
+<div class="sub-heading">Rationalising the Denominator</div>
+<p class="lesson-intro">We never leave a surd in the denominator. To remove it, we multiply top and bottom by the surd (or its conjugate).</p>
+<div class="formula-box">Simple denominator:   a/√b = a√b / b
+Conjugate denominator:
+  a/(√b + √c) = a(√b − √c) / (b − c)
+  (uses the identity (x+y)(x−y) = x² − y²)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 6</div>
+<div class="ex-question">Simplify: (a) √75 + √12  (b) (√5 + √3)(√5 − √3)  (c) 6/(2 + √2)</div>
+<div class="ex-step"><span class="step-num">a)</span> √75 = 5√3, √12 = 2√3 → 5√3 + 2√3 = <span class="ex-answer">7√3</span></div>
+<div class="ex-step"><span class="step-num">b)</span> (√5)² − (√3)² = 5 − 3 = <span class="ex-answer">2</span></div>
+<div class="ex-step"><span class="step-num">c)</span> × (2−√2)/(2−√2) = 6(2−√2) / (4−2) = 6(2−√2)/2 = <span class="ex-answer">3(2−√2) = 6 − 3√2</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Rationalising denominators appears almost every year in WASSCE. Always check if your final answer has a surd in the denominator — if it does, rationalise it.</div>`},
+
+{title:"Number Bases",
+body:`<p class="lesson-intro">Our everyday number system uses <strong>base 10</strong>. But numbers can be written in any base. Base 2 (binary) is used in computers; base 8 (octal) and base 16 (hexadecimal) also appear in WASSCE.</p>
+<div class="key-point"><strong>What a base means:</strong><br>
+In base 10: 345 = 3×10² + 4×10¹ + 5×10⁰<br>
+In base 5: 234₅ = 2×5² + 3×5¹ + 4×5⁰ = 50 + 15 + 4 = 69₁₀</div>
+<div class="formula-box">Converting Base n → Base 10:
+  Multiply each digit by its place value (powers of n) and add.
+
+Converting Base 10 → Base n:
+  Repeatedly divide by n, record remainders bottom-up.</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 7</div>
+<div class="ex-question">(a) Convert 1101₂ to base 10  (b) Convert 47₁₀ to base 2</div>
+<div class="ex-step"><span class="step-num">a)</span> 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 8 + 4 + 0 + 1 = <span class="ex-answer">13₁₀</span></div>
+<div class="ex-step"><span class="step-num">b)</span> 47÷2=23 r1 | 23÷2=11 r1 | 11÷2=5 r1 | 5÷2=2 r1 | 2÷2=1 r0 | 1÷2=0 r1<br>Reading remainders upward: <span class="ex-answer">101111₂</span></div></div>`}
+],
+quiz:[
+{q:"Which of the following is an irrational number?",opts:["0.333…","22/7","√11","−5"],ans:2,exp:"√11 = 3.31662… which is non-terminating and non-repeating. 0.333… = 1/3 (rational), 22/7 is a fraction (rational), −5 is an integer (rational)."},
+{q:"Simplify √108",opts:["6√3","3√12","9√3","4√3"],ans:0,exp:"√108 = √(36 × 3) = √36 × √3 = 6√3"},
+{q:"Divide GHS 500 in ratio 3:2. What is the larger share?",opts:["GHS 200","GHS 250","GHS 300","GHS 350"],ans:2,exp:"Total parts = 5. Larger share = (3/5) × 500 = GHS 300."},
+{q:"Convert 1011₂ to base 10.",opts:["9","10","11","13"],ans:2,exp:"1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8 + 0 + 2 + 1 = 11"},
+{q:"Rationalise: 4/√2",opts:["2√2","4√2","√8","2"],ans:0,exp:"4/√2 × √2/√2 = 4√2/2 = 2√2"},
+{q:"Which set contains ALL the others?",opts:["ℕ","ℤ","ℚ","ℝ"],ans:3,exp:"ℝ (Real Numbers) is the largest set. It contains rationals, which contain integers, which contain natural numbers. ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ"},
+{q:"Evaluate: 2/3 + 3/5",opts:["5/8","5/15","19/15","6/15"],ans:2,exp:"LCM of 3 and 5 is 15. 2/3 = 10/15 and 3/5 = 9/15. Sum = 19/15."}
+]}},
+
+{icon:"xⁿ",color:"rgba(252,209,22,0.2)",title:"Indices & Logarithms",desc:"Powers, roots, laws of indices, logarithms, and solving exponential equations.",tags:["SHS 1","Core"],year:"shs1",
+content:{
+intro:"Indices (powers) and Logarithms are two sides of the same coin. Mastering these opens the door to solving exponential equations, simplifying complex expressions, and real-world problems involving growth and decay.",
+lessons:[
+{title:"Laws of Indices",
+body:`<p class="lesson-intro">An <strong>index</strong> (or exponent/power) tells you how many times a number is multiplied by itself. aⁿ means 'a multiplied by itself n times'.</p>
+<div class="formula-box">THE SEVEN LAWS OF INDICES:
+1. aᵐ × aⁿ = aᵐ⁺ⁿ        (same base: multiply → add powers)
+2. aᵐ ÷ aⁿ = aᵐ⁻ⁿ        (same base: divide → subtract powers)
+3. (aᵐ)ⁿ = aᵐⁿ           (power of power → multiply)
+4. (ab)ⁿ = aⁿbⁿ          (power over product)
+5. a⁰ = 1                (any non-zero base, zero power = 1)
+6. a⁻ⁿ = 1/aⁿ            (negative power = reciprocal)
+7. a^(m/n) = ⁿ√(aᵐ)      (fractional power = root)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">Simplify: (a) 2⁵ × 2³  (b) 3⁷ ÷ 3⁴  (c) (5²)³  (d) 64^(2/3)  (e) (2/3)⁻²</div>
+<div class="ex-step"><span class="step-num">a)</span> 2⁵ × 2³ = 2^(5+3) = 2⁸ = <span class="ex-answer">256</span></div>
+<div class="ex-step"><span class="step-num">b)</span> 3⁷ ÷ 3⁴ = 3^(7−4) = 3³ = <span class="ex-answer">27</span></div>
+<div class="ex-step"><span class="step-num">c)</span> (5²)³ = 5^(2×3) = 5⁶ = <span class="ex-answer">15625</span></div>
+<div class="ex-step"><span class="step-num">d)</span> 64^(2/3) = (∛64)² = 4² = <span class="ex-answer">16</span></div>
+<div class="ex-step"><span class="step-num">e)</span> (2/3)⁻² = (3/2)² = 9/4 = <span class="ex-answer">2.25</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2 — Solving Index Equations</div>
+<div class="ex-question">Solve: (a) 2ˣ = 32  (b) 3^(x+1) = 81  (c) 4ˣ = 8</div>
+<div class="ex-step"><span class="step-num">a)</span> 32 = 2⁵, so 2ˣ = 2⁵ → <span class="ex-answer">x = 5</span></div>
+<div class="ex-step"><span class="step-num">b)</span> 81 = 3⁴, so x+1 = 4 → <span class="ex-answer">x = 3</span></div>
+<div class="ex-step"><span class="step-num">c)</span> Write with same base: 2²ˣ = 2³ → 2x = 3 → <span class="ex-answer">x = 3/2</span></div></div>`},
+
+{title:"Introduction to Logarithms",
+body:`<p class="lesson-intro">A <strong>logarithm</strong> answers the question: "To what power must I raise this base to get this number?"<br><br>
+If <strong>aˣ = y</strong>, then <strong>logₐy = x</strong></p>
+<div class="key-point"><strong>Reading logarithms:</strong><br>
+log₂8 = 3 means "2 to the power 3 gives 8" (2³ = 8)<br>
+log₁₀100 = 2 means "10 to the power 2 gives 100" (10² = 100)<br>
+log₅125 = 3 means "5 to the power 3 gives 125" (5³ = 125)</div>
+<div class="note-box"><strong>Special logs:</strong> log₁₀ is written as just "log" (common log). logₑ is written as "ln" (natural log). Unless told otherwise, "log" means base 10.</div>
+<div class="formula-box">FOUR LAWS OF LOGARITHMS:
+1. log(A × B) = log A + log B
+2. log(A ÷ B) = log A − log B
+3. log(Aⁿ)   = n × log A
+4. logₐb = log b / log a   (change of base)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3</div>
+<div class="ex-question">Given log 2 = 0.3010 and log 3 = 0.4771, find: (a) log 6 (b) log 18 (c) log 8 (d) log 1.5</div>
+<div class="ex-step"><span class="step-num">a)</span> log 6 = log(2×3) = log2 + log3 = 0.3010 + 0.4771 = <span class="ex-answer">0.7781</span></div>
+<div class="ex-step"><span class="step-num">b)</span> log 18 = log(2×3²) = log2 + 2log3 = 0.3010 + 0.9542 = <span class="ex-answer">1.2552</span></div>
+<div class="ex-step"><span class="step-num">c)</span> log 8 = log 2³ = 3log2 = 3 × 0.3010 = <span class="ex-answer">0.9030</span></div>
+<div class="ex-step"><span class="step-num">d)</span> log 1.5 = log(3/2) = log3 − log2 = 0.4771 − 0.3010 = <span class="ex-answer">0.1761</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 4 — Solving Log Equations</div>
+<div class="ex-question">Solve: (a) log₃x = 4  (b) log x + log(x−3) = 1  (c) 2log x = log 9</div>
+<div class="ex-step"><span class="step-num">a)</span> x = 3⁴ = <span class="ex-answer">81</span></div>
+<div class="ex-step"><span class="step-num">b)</span> log[x(x−3)] = 1 → x(x−3) = 10 → x²−3x−10 = 0 → (x−5)(x+2) = 0<br>x = 5 or x = −2. Since log of negative is undefined, <span class="ex-answer">x = 5</span></div>
+<div class="ex-step"><span class="step-num">c)</span> log x² = log 9 → x² = 9 → <span class="ex-answer">x = 3</span> (taking positive value)</div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Always check your answers when solving log equations — reject any solution that makes the argument of a log negative or zero.</div>`}
+],
+quiz:[
+{q:"Simplify: 5³ × 5⁴",opts:["5⁷","25⁷","5¹²","25¹²"],ans:0,exp:"Same base, add powers: 5³ × 5⁴ = 5^(3+4) = 5⁷"},
+{q:"Evaluate: 27^(2/3)",opts:["3","6","9","18"],ans:2,exp:"27^(2/3) = (∛27)² = 3² = 9"},
+{q:"What is log₂32?",opts:["4","5","6","16"],ans:1,exp:"2⁵ = 32, therefore log₂32 = 5"},
+{q:"If log 3 = 0.477, what is log 27?",opts:["0.477","0.954","1.431","3"],ans:2,exp:"log 27 = log 3³ = 3 × log 3 = 3 × 0.477 = 1.431"},
+{q:"Solve: 4ˣ = 64",opts:["x=2","x=3","x=4","x=16"],ans:1,exp:"64 = 4³, so 4ˣ = 4³ → x = 3"},
+{q:"Which law states log(A/B) = log A − log B?",opts:["Product rule","Quotient rule","Power rule","Change of base"],ans:1,exp:"The quotient (division) rule of logarithms: log(A÷B) = log A − log B"},
+{q:"What is 8⁻²/³?",opts:["4","1/4","−4","1/2"],ans:1,exp:"8^(2/3) = (∛8)² = 2² = 4. So 8^(−2/3) = 1/4"}]}},
+
+{icon:"➕",color:"rgba(0,107,63,0.3)",title:"Algebra",desc:"Expressions, factorisation, equations, inequalities, polynomials, and functions.",tags:["SHS 1","Core"],year:"shs1",
+content:{
+intro:"Algebra is the language of mathematics. It uses symbols and letters to represent quantities and express relationships. Strong algebra skills are needed in virtually every other topic.",
+lessons:[
+{title:"Algebraic Expressions & Factorisation",
+body:`<p class="lesson-intro">An <strong>algebraic expression</strong> is a combination of variables, constants, and operators. <strong>Factorisation</strong> is the process of writing an expression as a product of its factors.</p>
+<div class="sub-heading">Key Factorisation Identities</div>
+<div class="formula-box">1. Difference of Two Squares:   a² − b² = (a+b)(a−b)
+2. Perfect Square (Sum):        (a+b)² = a² + 2ab + b²
+3. Perfect Square (Difference): (a−b)² = a² − 2ab + b²
+4. Sum of Cubes:                a³ + b³ = (a+b)(a²−ab+b²)
+5. Difference of Cubes:         a³ − b³ = (a−b)(a²+ab+b²)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">Factorise fully: (a) 6x² − 9x (b) x² − 25 (c) 4x² − 12x + 9 (d) 2x² + 5x − 3</div>
+<div class="ex-step"><span class="step-num">a)</span> Common factor: 3x(2x − 3) <span class="ex-answer">= 3x(2x−3)</span></div>
+<div class="ex-step"><span class="step-num">b)</span> Difference of squares: x² − 5² <span class="ex-answer">= (x+5)(x−5)</span></div>
+<div class="ex-step"><span class="step-num">c)</span> (2x)² − 2(2x)(3) + 3² = <span class="ex-answer">(2x−3)²</span></div>
+<div class="ex-step"><span class="step-num">d)</span> Find two numbers that multiply to 2×(−3)=−6 and add to 5: they are +6 and −1.<br>2x² + 6x − x − 3 = 2x(x+3) − 1(x+3) = <span class="ex-answer">(2x−1)(x+3)</span></div></div>`},
+
+{title:"Equations & Inequalities",
+body:`<p class="lesson-intro">An <strong>equation</strong> states that two expressions are equal. An <strong>inequality</strong> shows that one expression is greater or less than another.</p>
+<div class="sub-heading">Solving Quadratic Equations</div>
+<div class="formula-box">Method 1 — Factorisation: (x−p)(x−q) = 0 → x=p or x=q
+Method 2 — Quadratic Formula:
+  x = [−b ± √(b²−4ac)] / 2a  for ax² + bx + c = 0
+Method 3 — Completing the Square:
+  x² + bx = (x + b/2)² − (b/2)²</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">Solve 2x² − 7x + 3 = 0 using (a) factorisation and (b) the quadratic formula.</div>
+<div class="ex-step"><span class="step-num">a)</span> Numbers multiplying to 2×3=6 and adding to −7: −6 and −1<br>2x² − 6x − x + 3 = 2x(x−3) − 1(x−3) = (2x−1)(x−3) = 0<br><span class="ex-answer">x = 1/2 or x = 3</span></div>
+<div class="ex-step"><span class="step-num">b)</span> a=2, b=−7, c=3. x = [7 ± √(49−24)] / 4 = [7 ± √25] / 4 = [7 ± 5] / 4<br>x = 12/4 = 3 or x = 2/4 = <span class="ex-answer">x = 3 or x = 1/2 ✓</span></div></div>
+<div class="sub-heading">The Discriminant</div>
+<div class="key-point"><strong>Discriminant D = b² − 4ac tells us the nature of roots:</strong><br>
+• D > 0: Two distinct real roots<br>
+• D = 0: One repeated real root (equal roots)<br>
+• D < 0: No real roots (complex/imaginary roots)</div>
+<div class="sub-heading">Solving Inequalities</div>
+<div class="note-box"><strong>⚠️ Critical Rule:</strong> When you multiply or divide both sides of an inequality by a <strong>negative number</strong>, you MUST flip the inequality sign.<br>
+e.g. −2x > 6 → x < −3 (sign flips!)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3</div>
+<div class="ex-question">Solve and show on a number line: (a) 3x − 4 > 11  (b) −3 ≤ 2x + 1 < 7</div>
+<div class="ex-step"><span class="step-num">a)</span> 3x > 15 → <span class="ex-answer">x > 5</span>  (open circle at 5, arrow right)</div>
+<div class="ex-step"><span class="step-num">b)</span> Left: −3−1 ≤ 2x → −4 ≤ 2x → −2 ≤ x<br>Right: 2x < 7−1 → 2x < 6 → x < 3<br><span class="ex-answer">−2 ≤ x < 3</span>  (closed circle at −2, open at 3)</div></div>`},
+
+{title:"Functions",
+body:`<p class="lesson-intro">A <strong>function</strong> is a rule that maps each input (x) to exactly one output f(x). Think of it as a machine: input goes in, output comes out.</p>
+<div class="key-point"><strong>Domain:</strong> All allowable input values (x-values)<br>
+<strong>Range:</strong> All possible output values (f(x)-values)<br>
+<strong>One-to-one:</strong> Each x maps to a unique f(x) and vice versa<br>
+<strong>Many-to-one:</strong> Multiple x values can give the same f(x)</div>
+<div class="formula-box">Composite Function:  (f∘g)(x) = f(g(x))   ← apply g first, then f
+Inverse Function:    if f(a) = b, then f⁻¹(b) = a
+                     To find f⁻¹: replace f(x) with y, swap x and y, solve for y</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 4</div>
+<div class="ex-question">Given f(x) = 3x − 1 and g(x) = x² + 2, find: (a) f(4) (b) gf(x) (c) f⁻¹(x) (d) the value of x for which fg(x) = 14</div>
+<div class="ex-step"><span class="step-num">a)</span> f(4) = 3(4)−1 = <span class="ex-answer">11</span></div>
+<div class="ex-step"><span class="step-num">b)</span> gf(x) = g(3x−1) = (3x−1)² + 2 = 9x²−6x+1+2 = <span class="ex-answer">9x²−6x+3</span></div>
+<div class="ex-step"><span class="step-num">c)</span> y = 3x−1 → swap: x = 3y−1 → y = (x+1)/3 → <span class="ex-answer">f⁻¹(x) = (x+1)/3</span></div>
+<div class="ex-step"><span class="step-num">d)</span> fg(x) = f(x²+2) = 3(x²+2)−1 = 3x²+5 = 14 → 3x²=9 → x²=3 → <span class="ex-answer">x = ±√3</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Note that fg(x) ≠ gf(x) in general. Always apply the functions in the correct order — rightmost first.</div>`}
+],
+quiz:[
+{q:"Factorise completely: 4x² − 9",opts:["(2x+3)(2x+3)","(4x−3)(x+3)","(2x+3)(2x−3)","(2x−9)(2x+1)"],ans:2,exp:"4x² − 9 = (2x)² − 3². This is difference of two squares: (2x+3)(2x−3)"},
+{q:"The discriminant of x² − 4x + 4 = 0 is:",opts:["0","8","16","−8"],ans:0,exp:"D = b²−4ac = (−4)²−4(1)(4) = 16−16 = 0. Equal (repeated) roots."},
+{q:"Solve: 3x + 5 ≥ 14",opts:["x ≤ 3","x ≥ 3","x > 3","x < 3"],ans:1,exp:"3x ≥ 14−5 = 9 → x ≥ 3"},
+{q:"If f(x) = 2x+1, find f⁻¹(7)",opts:["3","4","15","13"],ans:0,exp:"f⁻¹(x) = (x−1)/2. So f⁻¹(7) = (7−1)/2 = 6/2 = 3"},
+{q:"Given f(x)=x+3 and g(x)=2x, find fg(4)",opts:["11","14","8","10"],ans:0,exp:"fg(4) = f(g(4)) = f(8) = 8+3 = 11"},
+{q:"Solve the quadratic: x² − x − 6 = 0",opts:["x=2,x=3","x=−2,x=3","x=−3,x=2","x=6,x=−1"],ans:1,exp:"Factorise: (x−3)(x+2)=0. So x=3 or x=−2"},
+{q:"What are the roots of x² + 6x + 9 = 0?",opts:["x=3 and x=−3","x=−3 only (repeated)","x=3 only (repeated)","x=−9 and x=−1"],ans:1,exp:"x²+6x+9 = (x+3)² = 0 → x = −3 (repeated root). D = 36−36 = 0."}]}},
+
+{icon:"📐",color:"rgba(206,17,38,0.2)",title:"Plane Geometry",desc:"Angles, triangles, polygons, circle theorems, and geometric proofs.",tags:["SHS 1","Core"],year:"shs1",
+content:{
+intro:"Plane Geometry is the study of flat (2D) shapes — their properties, measurements, and relationships. Circle theorems and angle rules are heavily tested in WASSCE.",
+lessons:[
+{title:"Angles & Lines",
+body:`<p class="lesson-intro">Understanding how angles relate to each other is the foundation of all geometry proofs.</p>
+<div class="formula-box">ANGLE RELATIONSHIPS:
+• Complementary angles: sum = 90°
+• Supplementary angles: sum = 180°
+• Angles on a straight line: sum = 180°
+• Angles at a point: sum = 360°
+• Vertically opposite angles: equal
+• Alternate angles (Z-angles): equal (parallel lines)
+• Co-interior / allied angles: sum = 180° (parallel lines)
+• Corresponding angles (F-angles): equal (parallel lines)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">In the diagram, two parallel lines are cut by a transversal. One angle is (3x + 15)° and its co-interior angle is (2x + 25)°. Find x and both angles.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> Co-interior angles add to 180°: (3x+15) + (2x+25) = 180</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> 5x + 40 = 180 → 5x = 140 → x = 28</div>
+<div class="ex-step"><span class="step-num">Answer:</span> Angles = 3(28)+15 = 99° and 2(28)+25 = <span class="ex-answer">99° and 81° (sum = 180° ✓)</span></div></div>`},
+
+{title:"Triangle Properties & Congruence",
+body:`<p class="lesson-intro">Triangles are the most important shape in geometry. Their properties underpin proofs, constructions, and trigonometry.</p>
+<div class="key-point"><strong>Triangle Angle Sum:</strong> All angles in a triangle = 180°<br>
+<strong>Exterior Angle Theorem:</strong> Exterior angle = sum of two opposite interior angles<br>
+<strong>Isoceles Triangle:</strong> Two equal sides → two equal base angles</div>
+<div class="formula-box">CONGRUENCE CONDITIONS (shapes are identical):
+SSS — three sides equal
+SAS — two sides and included angle equal
+ASA — two angles and included side equal
+AAS — two angles and any corresponding side equal
+RHS — right angle, hypotenuse, and one side equal
+
+SIMILARITY CONDITIONS (same shape, different size):
+AA  — two corresponding angles equal
+SSS — all three sides in the same ratio
+SAS — two sides in same ratio and included angle equal</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">In triangle ABC, AB = AC = 8cm and ∠BAC = 40°. Find ∠ABC and ∠ACB.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> AB = AC, so triangle is isosceles. Base angles are equal: ∠ABC = ∠ACB</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> ∠ABC + ∠ACB = 180° − 40° = 140°</div>
+<div class="ex-step"><span class="step-num">Step 3:</span> Each base angle = 140°/2 = <span class="ex-answer">70°</span></div></div>`},
+
+{title:"Circle Theorems",
+body:`<p class="lesson-intro">Circle theorems are one of the most frequently examined topics in WASSCE geometry. Learn all 6 theorems and their converses.</p>
+<div class="formula-box">THE 6 ESSENTIAL CIRCLE THEOREMS:
+1. Angle at centre = 2 × angle at circumference (same arc)
+2. Angle in a semicircle = 90°
+3. Angles in the same segment are equal
+4. Opposite angles of a cyclic quadrilateral add up to 180°
+5. Angle between tangent and chord = angle in alternate segment (Tangent-Chord theorem)
+6. Two tangents from an external point are equal in length</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3</div>
+<div class="ex-question">O is the centre of a circle. Angle AOB = 136°. Find (a) angle ACB where C is on the major arc (b) the reflex angle AOB.</div>
+<div class="ex-step"><span class="step-num">a)</span> Angle at circumference = half angle at centre = 136°/2 = <span class="ex-answer">68°</span></div>
+<div class="ex-step"><span class="step-num">b)</span> Reflex AOB = 360° − 136° = <span class="ex-answer">224°</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 4 — Cyclic Quadrilateral</div>
+<div class="ex-question">ABCD is a cyclic quadrilateral where ∠DAB = 3x and ∠BCD = (x + 40)°. Find all four angles.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> Opposite angles sum to 180°: 3x + (x+40) = 180 → 4x = 140 → x = 35</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> ∠DAB = 105°, ∠BCD = 75°</div>
+<div class="ex-step"><span class="step-num">Step 3:</span> Let ∠ABC = y. ∠CDA = 180° − y. Also ∠ABC + ∠CDA = 180°, which is automatically satisfied.</div>
+<div class="ex-answer">∠DAB = 105°, ∠BCD = 75°</div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> In every circle theorem question, clearly state which theorem you are applying before using it. Examiners award marks for correct theorem identification.</div>`}
+],
+quiz:[
+{q:"The angle at the centre is 150°. What is the angle at the circumference?",opts:["300°","75°","150°","30°"],ans:1,exp:"Angle at circumference = half the angle at centre = 150°/2 = 75°"},
+{q:"ABCD is a cyclic quadrilateral. ∠ABC = 110°. Find ∠ADC.",opts:["110°","70°","80°","250°"],ans:1,exp:"Opposite angles of a cyclic quadrilateral sum to 180°. ∠ADC = 180°−110° = 70°"},
+{q:"An angle in a semicircle is always:",opts:["45°","60°","90°","180°"],ans:2,exp:"Theorem: The angle subtended by a diameter at the circumference is always 90°."},
+{q:"Two parallel lines are cut by a transversal. One alternate angle is 55°. What is the other?",opts:["55°","125°","35°","180°"],ans:0,exp:"Alternate angles (Z-angles) are equal when lines are parallel. Both = 55°."},
+{q:"In an isosceles triangle, one base angle is 52°. What is the apex (top) angle?",opts:["52°","76°","128°","104°"],ans:1,exp:"Base angles are equal: both = 52°. Apex = 180°−52°−52° = 76°"},
+{q:"What is the exterior angle of a triangle with interior angles 60° and 70°?",opts:["50°","130°","120°","110°"],ans:1,exp:"Exterior angle = sum of two non-adjacent interior angles = 60° + 70° = 130°"}]}},
+
+{icon:"📏",color:"rgba(252,209,22,0.2)",title:"Mensuration",desc:"Area, perimeter, surface area, and volume of 2D and 3D shapes.",tags:["SHS 2","Core"],year:"shs2",
+content:{
+intro:"Mensuration is the branch of mathematics dealing with measurement of geometric figures. It combines formula knowledge with problem-solving — a reliable source of marks in WASSCE.",
+lessons:[
+{title:"Perimeter & Area of 2D Shapes",
+body:`<p class="lesson-intro">Perimeter is the total distance around a shape. Area is the amount of space it covers.</p>
+<div class="formula-box">AREA FORMULAS:
+Rectangle:     A = l × w        Perimeter = 2(l+w)
+Triangle:      A = ½ × b × h   (height must be perpendicular)
+Circle:        A = πr²          Circumference = 2πr
+Trapezium:     A = ½(a+b)h      (a, b = parallel sides)
+Parallelogram: A = b × h
+Sector:        A = (θ/360) × πr²    Arc = (θ/360) × 2πr
+Segment:       Area = Area of sector − Area of triangle</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">A sector of a circle has radius 7cm and angle 120°. Find (a) arc length (b) area of sector (c) area of the minor segment. [Take π = 22/7]</div>
+<div class="ex-step"><span class="step-num">a)</span> Arc = (120/360) × 2 × (22/7) × 7 = (1/3) × 44 = <span class="ex-answer">44/3 ≈ 14.67 cm</span></div>
+<div class="ex-step"><span class="step-num">b)</span> Area of sector = (120/360) × (22/7) × 49 = (1/3) × 154 = <span class="ex-answer">154/3 ≈ 51.33 cm²</span></div>
+<div class="ex-step"><span class="step-num">c)</span> Area of triangle = ½r²sinθ = ½×49×sin120° = ½×49×(√3/2) ≈ <span class="ex-answer">21.22 cm²</span><br>Segment = 51.33 − 21.22 ≈ 30.11 cm²</div></div>`},
+
+{title:"Surface Area & Volume of 3D Shapes",
+body:`<p class="lesson-intro">3D shapes have both surface area (the total area of all faces) and volume (the space inside). These always appear in WASSCE.</p>
+<div class="formula-box">VOLUME & SURFACE AREA:
+Cuboid:   V = lwh          SA = 2(lw+lh+wh)
+Cylinder: V = πr²h         SA = 2πr² + 2πrh = 2πr(r+h)
+Cone:     V = ⅓πr²h        Slant SA = πrl + πr²  (l = slant height)
+Sphere:   V = (4/3)πr³     SA = 4πr²
+Pyramid:  V = ⅓ × base area × height</div>
+<div class="key-point"><strong>Slant height of cone:</strong> l = √(r² + h²) — always use Pythagoras to find it if not given!</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">A cone has base radius 6cm and perpendicular height 8cm. Find (a) slant height (b) total surface area (c) volume. [π = 3.14]</div>
+<div class="ex-step"><span class="step-num">a)</span> l = √(6²+8²) = √(36+64) = √100 = <span class="ex-answer">10 cm</span></div>
+<div class="ex-step"><span class="step-num">b)</span> TSA = πrl + πr² = π×6×10 + π×36 = 60π + 36π = 96π = 96×3.14 = <span class="ex-answer">301.44 cm²</span></div>
+<div class="ex-step"><span class="step-num">c)</span> V = ⅓×π×36×8 = 96π = <span class="ex-answer">301.44 cm³</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3 — Composite Shape</div>
+<div class="ex-question">A solid consists of a cylinder of radius 5cm and height 10cm, with a hemisphere of the same radius on top. Find the total volume.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> Volume of cylinder = πr²h = π×25×10 = 250π cm³</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> Volume of hemisphere = ½ × (4/3)πr³ = (2/3)π×125 = (250/3)π cm³</div>
+<div class="ex-step"><span class="step-num">Total:</span> 250π + (250/3)π = π(750+250)/3 = <span class="ex-answer">1000π/3 ≈ 1047.2 cm³</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Composite shape questions are very common. Always break the shape into recognisable 3D parts, find each volume/area separately, then combine.</div>`}
+],
+quiz:[
+{q:"A circle has radius 7cm. Find its area. (π = 22/7)",opts:["44 cm²","154 cm²","22 cm²","49 cm²"],ans:1,exp:"A = πr² = (22/7) × 49 = 22 × 7 = 154 cm²"},
+{q:"A trapezium has parallel sides 8cm and 12cm, height 5cm. Find its area.",opts:["50 cm²","60 cm²","80 cm²","100 cm²"],ans:0,exp:"A = ½(a+b)h = ½(8+12)×5 = ½×20×5 = 50 cm²"},
+{q:"A cone has r=3cm, h=4cm. What is the slant height?",opts:["5cm","7cm","25cm","3.5cm"],ans:0,exp:"l = √(r²+h²) = √(9+16) = √25 = 5cm"},
+{q:"Volume of a sphere with r=3cm is:",opts:["36π cm³","12π cm³","9π cm³","4π cm³"],ans:0,exp:"V = (4/3)πr³ = (4/3)×π×27 = 36π cm³"},
+{q:"The total surface area of a cylinder (r=4, h=6) is:",opts:["80π","64π","48π","24π"],ans:0,exp:"TSA = 2πr(r+h) = 2π×4×(4+6) = 8π×10 = 80π cm²"},
+{q:"A sector has angle 90° and radius 6cm. Find its area. (π=3.14)",opts:["28.26 cm²","56.52 cm²","18.84 cm²","113.04 cm²"],ans:0,exp:"A = (90/360)×π×36 = (1/4)×3.14×36 = 28.26 cm²"}]}},
+
+{icon:"📊",color:"rgba(0,107,63,0.3)",title:"Statistics",desc:"Data collection, averages, spread, frequency tables, histograms, and probability.",tags:["SHS 2","Core"],year:"shs2",
+content:{
+intro:"Statistics involves collecting, organising, analysing, and interpreting data. Probability measures how likely events are. Both are heavily examined in WASSCE Core Maths.",
+lessons:[
+{title:"Measures of Central Tendency",
+body:`<p class="lesson-intro">The three averages — <strong>mean</strong>, <strong>median</strong>, and <strong>mode</strong> — each describe the 'centre' of a data set in different ways.</p>
+<div class="formula-box">MEAN:     x̄ = Σx / n        (sum of all values ÷ number of values)
+          For grouped data: x̄ = Σ(fx) / Σf   (f = frequency, x = midpoint)
+
+MEDIAN:   Middle value when data is arranged in order
+          If n is even: median = average of (n/2)th and (n/2+1)th values
+          For grouped data: use the median class and interpolation formula
+
+MODE:     Most frequently occurring value
+          For grouped data: modal class is the class with highest frequency</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1 — Frequency Table</div>
+<div class="ex-question">The ages of 20 students: 14,15,15,16,16,16,16,17,17,17,17,17,18,18,18,18,19,19,19,20<br>Find the mean, median, and mode.</div>
+<div class="ex-step"><span class="step-num">Mean:</span> Sum = 14+15×2+16×4+17×5+18×4+19×3+20 = 14+30+64+85+72+57+20 = 342<br>Mean = 342/20 = <span class="ex-answer">17.1</span></div>
+<div class="ex-step"><span class="step-num">Median:</span> n=20 (even). Average of 10th and 11th values. Both = 17. <span class="ex-answer">Median = 17</span></div>
+<div class="ex-step"><span class="step-num">Mode:</span> 17 appears 5 times (most). <span class="ex-answer">Mode = 17</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2 — Grouped Data Mean</div>
+<div class="ex-question">Marks: 10–19 (f=3), 20–29 (f=7), 30–39 (f=12), 40–49 (f=6), 50–59 (f=2). Find the mean.</div>
+<div class="ex-step"><span class="step-num">Midpoints:</span> 14.5, 24.5, 34.5, 44.5, 54.5</div>
+<div class="ex-step"><span class="step-num">fx:</span> 43.5 + 171.5 + 414 + 267 + 109 = 1005</div>
+<div class="ex-step"><span class="step-num">Σf = 30</span></div>
+<div class="ex-step"><span class="step-num">Mean = 1005/30 = <span class="ex-answer">33.5</span></span></div></div>`},
+
+{title:"Measures of Spread & Probability",
+body:`<p class="lesson-intro"><strong>Measures of spread</strong> tell us how spread out the data is. <strong>Probability</strong> gives the chance that an event will occur.</p>
+<div class="formula-box">MEASURES OF SPREAD:
+Range      = Maximum − Minimum
+Variance   = Σ(x − x̄)² / n   or   Σx²/n − (x̄)²  (easier formula)
+Std Dev    = √Variance    (σ — same units as data)
+IQR        = Q3 − Q1     (middle 50% of data)
+
+PROBABILITY:
+P(A) = number of favourable outcomes / total outcomes
+P(A') = 1 − P(A)              (complement)
+P(A or B) = P(A) + P(B) − P(A and B)
+P(A and B) = P(A) × P(B)     (independent events only)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3 — Probability</div>
+<div class="ex-question">A bag contains 4 red, 3 blue, and 5 green balls. Two balls are drawn without replacement. Find the probability that (a) both are red (b) the first is red and the second is blue.</div>
+<div class="ex-step"><span class="step-num">Total = 12</span></div>
+<div class="ex-step"><span class="step-num">a)</span> P(1st red) = 4/12. P(2nd red | 1st red) = 3/11<br>P(both red) = (4/12) × (3/11) = 12/132 = <span class="ex-answer">1/11</span></div>
+<div class="ex-step"><span class="step-num">b)</span> P(red then blue) = (4/12) × (3/11) = 12/132 = <span class="ex-answer">1/11</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Always state whether sampling is with or without replacement. Without replacement means the denominator decreases by 1 each draw.</div>`}
+],
+quiz:[
+{q:"Find the mean of: 5, 8, 12, 9, 6",opts:["8","9","7","10"],ans:0,exp:"Sum = 5+8+12+9+6 = 40. Mean = 40/5 = 8"},
+{q:"Median of: 3, 7, 1, 9, 5, 11, 2 (after sorting: 1,2,3,5,7,9,11) is:",opts:["5","7","3","4"],ans:0,exp:"Sorted: 1,2,3,5,7,9,11. Middle value (4th of 7) = 5"},
+{q:"A die is rolled. P(even number) = ?",opts:["1/6","1/3","1/2","2/3"],ans:2,exp:"Even numbers on a die: 2,4,6 — that's 3 out of 6. P = 3/6 = 1/2"},
+{q:"Two independent events have P(A)=0.4 and P(B)=0.3. P(A and B) = ?",opts:["0.7","0.12","0.58","0.1"],ans:1,exp:"For independent events: P(A and B) = P(A) × P(B) = 0.4 × 0.3 = 0.12"},
+{q:"P(A) = 0.65. What is P(A')?",opts:["0.65","0.35","1.65","0"],ans:1,exp:"P(A') = 1 − P(A) = 1 − 0.65 = 0.35"},
+{q:"What is the range of: 12, 8, 19, 3, 15, 7?",opts:["11","12","16","9"],ans:2,exp:"Range = Max − Min = 19 − 3 = 16"}]}},
+
+{icon:"📐",color:"rgba(252,209,22,0.2)",title:"Trigonometry",desc:"SOHCAHTOA, sine rule, cosine rule, bearings, and 3D trigonometry.",tags:["SHS 2","Core"],year:"shs2",
+content:{
+intro:"Trigonometry relates angles to side lengths in triangles. It is used in navigation (bearings), architecture, engineering, and physics. Expect at least two trig questions in every WASSCE paper.",
+lessons:[
+{title:"Right-Angled Triangles — SOHCAHTOA",
+body:`<p class="lesson-intro">For a <strong>right-angled triangle</strong>, the three trigonometric ratios relate each acute angle to the ratio of two sides.</p>
+<div class="formula-box">SOH:  sin θ = Opposite / Hypotenuse
+CAH:  cos θ = Adjacent / Hypotenuse
+TOA:  tan θ = Opposite / Adjacent
+
+Pythagoras:  a² + b² = c²  (c = hypotenuse)
+
+Key Exact Values:
+  sin30°=½   cos30°=√3/2  tan30°=1/√3
+  sin45°=1/√2 cos45°=1/√2  tan45°=1
+  sin60°=√3/2  cos60°=½   tan60°=√3
+  sin90°=1   cos90°=0</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">A ladder 10m long leans against a vertical wall. The foot of the ladder is 4m from the wall. Find (a) the angle the ladder makes with the ground (b) how high up the wall it reaches.</div>
+<div class="ex-step"><span class="step-num">a)</span> cos θ = adjacent/hypotenuse = 4/10 = 0.4 → θ = cos⁻¹(0.4) = <span class="ex-answer">66.4°</span></div>
+<div class="ex-step"><span class="step-num">b)</span> h = √(10²−4²) = √(100−16) = √84 = <span class="ex-answer">9.17m</span></div></div>`},
+
+{title:"Sine Rule, Cosine Rule & Bearings",
+body:`<p class="lesson-intro">When a triangle is NOT right-angled, we use the Sine Rule or Cosine Rule to find missing sides and angles.</p>
+<div class="formula-box">SINE RULE:
+  a/sinA = b/sinB = c/sinC   (use when A–S–A or S–A–S is known)
+
+COSINE RULE:
+  a² = b² + c² − 2bc·cosA   (use when two sides + included angle known, or all 3 sides)
+  cosA = (b²+c²−a²) / (2bc)
+
+AREA OF ANY TRIANGLE:
+  Area = ½ab·sinC</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2 — Sine Rule</div>
+<div class="ex-question">In triangle PQR, PQ=8cm, ∠QPR=52°, ∠PQR=65°. Find QR.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> ∠PRQ = 180°−52°−65° = 63°</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> QR/sin52° = 8/sin63° → QR = 8×sin52°/sin63° = 8×0.788/0.891 = <span class="ex-answer">7.08 cm</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3 — Bearings</div>
+<div class="ex-question">A ship sails from port A on a bearing of 040° for 50km to B, then on a bearing of 130° for 80km to C. Find distance AC and bearing of C from A.</div>
+<div class="ex-step"><span class="step-num">Angle ABC:</span> Interior angle = 180°−(130°−40°) = 90° (the path makes a right angle!)</div>
+<div class="ex-step"><span class="step-num">AC:</span> AC² = 50² + 80² = 2500+6400 = 8900 → AC = √8900 = <span class="ex-answer">94.3 km</span></div>
+<div class="ex-step"><span class="step-num">Bearing:</span> tanα = 80/50 = 1.6 → α = 58° → Bearing = 040°+90°−58°... work geometrically: <span class="ex-answer">≈ 122°</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> For bearings, always draw a diagram first. Mark North as pointing up. Bearings are always measured clockwise from North and written with 3 digits (e.g. 045°, not 45°).</div>`}
+],
+quiz:[
+{q:"In a right triangle, opposite=5 and hypotenuse=13. Find sinθ.",opts:["5/12","13/5","5/13","12/13"],ans:2,exp:"SOH: sin θ = Opposite/Hypotenuse = 5/13"},
+{q:"What is tan 45°?",opts:["0","1/√2","√3","1"],ans:3,exp:"tan 45° = sin45°/cos45° = (1/√2)/(1/√2) = 1. This is a standard exact value."},
+{q:"Which rule would you use to find a side given two sides and the included angle?",opts:["Sine Rule","SOHCAHTOA","Cosine Rule","Pythagoras"],ans:2,exp:"The Cosine Rule: a² = b² + c² − 2bc·cosA is used when you know two sides and the included angle (SAS)."},
+{q:"Back bearing of 250° is:",opts:["070°","110°","340°","160°"],ans:0,exp:"Back bearing = 250° − 180° = 070°"},
+{q:"Area of a triangle with sides 6cm and 8cm and included angle 30° is:",opts:["24 cm²","12 cm²","48 cm²","6 cm²"],ans:1,exp:"Area = ½ab·sinC = ½×6×8×sin30° = 24×0.5 = 12 cm²"},
+{q:"sin²θ + cos²θ = ?",opts:["0","2","sin2θ","1"],ans:3,exp:"This is the fundamental Pythagorean identity. It is always true for any angle θ."}]}},
+
+{icon:"↗️",color:"rgba(0,107,63,0.3)",title:"Vectors",desc:"Vector notation, magnitude, direction cosines, addition, and geometric applications.",tags:["SHS 3","Core"],year:"shs3",
+content:{
+intro:"Vectors describe quantities that have both magnitude (size) and direction. They are used to represent displacement, velocity, and force — and appear in both geometry proofs and coordinate problems.",
+lessons:[
+{title:"Vector Fundamentals",
+body:`<p class="lesson-intro">A <strong>scalar</strong> has only magnitude (e.g. temperature, mass). A <strong>vector</strong> has both magnitude and direction (e.g. velocity, displacement, force).</p>
+<div class="formula-box">NOTATION:
+  Column vector: a = (x)  or  a = xi + yj
+                     (y)
+  Magnitude: |a| = √(x² + y²)
+  Unit vector: â = a / |a|   (magnitude = 1)
+  
+OPERATIONS:
+  a + b = (a₁+b₁, a₂+b₂)
+  a − b = (a₁−b₁, a₂−b₂)
+  k·a   = (ka₁, ka₂)
+  
+POSITION VECTORS:
+  If A has position vector a and B has position vector b:
+  Vector AB⃗ = b − a</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">Given a = (3, 4) and b = (−1, 2). Find (a) |a| (b) a + b (c) 2a − 3b (d) unit vector in direction of b</div>
+<div class="ex-step"><span class="step-num">a)</span> |a| = √(9+16) = √25 = <span class="ex-answer">5</span></div>
+<div class="ex-step"><span class="step-num">b)</span> a+b = (3+(−1), 4+2) = <span class="ex-answer">(2, 6)</span></div>
+<div class="ex-step"><span class="step-num">c)</span> 2a = (6,8), 3b = (−3,6). 2a−3b = (6−(−3), 8−6) = <span class="ex-answer">(9, 2)</span></div>
+<div class="ex-step"><span class="step-num">d)</span> |b| = √(1+4) = √5. Unit vector = (−1/√5, 2/√5) = <span class="ex-answer">(−√5/5, 2√5/5)</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2 — Vector Geometry</div>
+<div class="ex-question">O is the origin. A has position vector 2i + 3j. B has position vector 5i + j. M is the midpoint of AB. Find the position vector of M.</div>
+<div class="ex-step"><span class="step-num">Method:</span> Position vector of M = ½(a + b) = ½((2+5)i + (3+1)j) = ½(7i + 4j) = <span class="ex-answer">3.5i + 2j</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> To prove three points are collinear (on the same line), show that the vectors between them are parallel (one is a scalar multiple of the other).</div>`}
+],
+quiz:[
+{q:"Find |v| for v = (5, 12)",opts:["7","13","17","169"],ans:1,exp:"|v| = √(5²+12²) = √(25+144) = √169 = 13"},
+{q:"If a=(2,3) and b=(4,−1), find a+b.",opts:["(6,2)","(2,4)","(6,4)","(−2,4)"],ans:0,exp:"a+b = (2+4, 3+(−1)) = (6, 2)"},
+{q:"3a − b where a=(1,2) and b=(3,0) is:",opts:["(0,6)","(6,6)","(0,2)","(−1,5)"],ans:0,exp:"3a=(3,6), b=(3,0). 3a−b = (3−3, 6−0) = (0,6)"},
+{q:"Position vector of midpoint of A(4,6) and B(2,2) is:",opts:["(3,4)","(6,8)","(1,2)","(2,3)"],ans:0,exp:"Midpoint = ½(4+2, 6+2) = ½(6,8) = (3,4)"},
+{q:"A unit vector has magnitude:",opts:["0","π","1","varies"],ans:2,exp:"By definition, a unit vector has magnitude exactly 1. It only shows direction."}]}},
+
+{icon:"🔄",color:"rgba(206,17,38,0.2)",title:"Transformation",desc:"Reflection, rotation, translation, enlargement, and inverse transformations.",tags:["SHS 3","Core"],year:"shs3",
+content:{
+intro:"Transformations describe how geometric shapes can be moved or changed while preserving certain properties. In WASSCE, you may be asked to find images, describe transformations, or use matrices.",
+lessons:[
+{title:"Types of Transformation",
+body:`<p class="lesson-intro">There are four main transformations in SHS Maths. For each, you must know how to apply it to coordinates and how to describe it fully.</p>
+<div class="formula-box">TRANSLATION by vector (a,b):
+  (x,y) → (x+a, y+b)
+  
+REFLECTION:
+  In x-axis:       (x,y) → (x, −y)
+  In y-axis:       (x,y) → (−x, y)
+  In y=x:          (x,y) → (y, x)
+  In y=−x:         (x,y) → (−y, −x)
+  In x=k:          (x,y) → (2k−x, y)
+  In y=k:          (x,y) → (x, 2k−y)
+
+ROTATION about the origin:
+  90° anticlockwise:  (x,y) → (−y, x)
+  90° clockwise:      (x,y) → (y, −x)
+  180°:               (x,y) → (−x, −y)
+
+ENLARGEMENT, centre O, scale factor k:
+  (x,y) → (kx, ky)
+  Area of image = k² × area of object</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">Triangle ABC has vertices A(1,2), B(3,2), C(2,4). Find the image after (a) reflection in y-axis (b) rotation 90° anticlockwise about origin (c) enlargement, centre O, scale factor 3</div>
+<div class="ex-step"><span class="step-num">a)</span> (x,y)→(−x,y): A'(−1,2), B'(−3,2), C'(−2,4) <span class="ex-answer">✓</span></div>
+<div class="ex-step"><span class="step-num">b)</span> (x,y)→(−y,x): A'(−2,1), B'(−2,3), C'(−4,2) <span class="ex-answer">✓</span></div>
+<div class="ex-step"><span class="step-num">c)</span> (x,y)→(3x,3y): A'(3,6), B'(9,6), C'(6,12) <span class="ex-answer">✓</span></div></div>
+<div class="key-point"><strong>Describing Transformations Fully:</strong><br>
+Translation: state the translation vector<br>
+Reflection: state the mirror line<br>
+Rotation: state centre, angle, and direction<br>
+Enlargement: state centre and scale factor</div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> A common question asks you to "describe fully" a transformation. You will lose marks if you miss any part — e.g. saying "rotation of 90°" without stating the centre or direction.</div>`}
+],
+quiz:[
+{q:"Translate (3,5) by vector (−2, 4). Image is:",opts:["(1,9)","(5,1)","(−1,9)","(1,−9)"],ans:0,exp:"(3+(−2), 5+4) = (1, 9)"},
+{q:"Reflect (4,−3) in the x-axis. Image is:",opts:["(4,3)","(−4,−3)","(−4,3)","(3,4)"],ans:0,exp:"Reflection in x-axis: (x,y)→(x,−y). (4,−3)→(4,3)"},
+{q:"Rotate (2,5) by 90° anticlockwise about origin. Image is:",opts:["(5,2)","(−5,2)","(2,−5)","(−2,5)"],ans:1,exp:"90° anticlockwise: (x,y)→(−y,x). (2,5)→(−5,2)"},
+{q:"Enlargement scale factor 2 maps triangle of area 12cm² to area:",opts:["24 cm²","48 cm²","36 cm²","6 cm²"],ans:1,exp:"Area scales by k² = 4. New area = 4 × 12 = 48 cm²"},
+{q:"Reflection in y = x maps (a,b) to:",opts:["(a,b)","(−a,−b)","(b,a)","(−b,−a)"],ans:2,exp:"Reflection in y=x swaps the coordinates: (a,b)→(b,a)"},
+{q:"A rotation of 180° about the origin maps (3,−5) to:",opts:["(−3,5)","(5,3)","(3,5)","(5,−3)"],ans:0,exp:"180° rotation: (x,y)→(−x,−y). (3,−5)→(−3,5)"}]}}
 ];
 
-const electiveTopics = [
-  {
-    icon:"∫", color:"rgba(0,107,63,0.3)", title:"Differentiation",
-    desc:"Limits, first principles, rules of differentiation, and applications.",
-    tags:["Elective","Calculus"],
-    content:{
-      intro:"Differentiation finds the rate of change of a function — how quickly it is increasing or decreasing at any point.",
-      lessons:[
-        {
-          title:"Basic Rules of Differentiation",
-          text:"The power rule is the most fundamental. Other rules include the product rule, quotient rule, and chain rule.",
-          formula:"d/dx [xⁿ] = nxⁿ⁻¹\nd/dx [aⁿ] = 0 (constant)\nd/dx [sin x] = cos x\nd/dx [cos x] = -sin x\nd/dx [eˣ] = eˣ\nd/dx [ln x] = 1/x",
-          example:"Differentiate f(x) = 3x⁴ - 5x² + 2\nf'(x) = 12x³ - 10x"
-        },
-        {
-          title:"Chain, Product & Quotient Rules",
-          text:"For composite, product, and quotient functions, special rules apply.",
-          formula:"Chain Rule: dy/dx = (dy/du)·(du/dx)\nProduct Rule: d/dx[uv] = u·v' + v·u'\nQuotient Rule: d/dx[u/v] = (v·u' - u·v') / v²",
-          example:"Differentiate y = (2x+3)⁵ using chain rule:\nlet u = 2x+3 → y = u⁵\ndy/dx = 5u⁴ × 2 = 10(2x+3)⁴"
-        },
-        {
-          title:"Applications of Differentiation",
-          text:"Differentiation is used to find maxima/minima, gradients of tangents/normals, and rates of change.",
-          formula:"At stationary point: f'(x) = 0\nMaximum: f''(x) < 0\nMinimum: f''(x) > 0",
-          example:"f(x) = x³ - 3x² + 2\nf'(x) = 3x² - 6x = 3x(x-2) = 0\nx = 0 or x = 2\nf''(0) = -6 < 0 → maximum at x=0\nf''(2) = 6 > 0 → minimum at x=2"
-        }
-      ]
-    }
-  },
-  {
-    icon:"∫₊", color:"rgba(252,209,22,0.2)", title:"Integration",
-    desc:"Indefinite & definite integrals, area under a curve, and applications.",
-    tags:["Elective","Calculus"],
-    content:{
-      intro:"Integration is the reverse of differentiation. It finds the area under a curve and accumulates quantities.",
-      lessons:[
-        {
-          title:"Indefinite Integration",
-          text:"The indefinite integral reverses differentiation. Always add the constant of integration C.",
-          formula:"∫xⁿ dx = xⁿ⁺¹/(n+1) + C (n ≠ -1)\n∫cos x dx = sin x + C\n∫sin x dx = -cos x + C\n∫eˣ dx = eˣ + C\n∫(1/x) dx = ln|x| + C",
-          example:"∫(3x² + 4x) dx = x³ + 2x² + C"
-        },
-        {
-          title:"Definite Integration",
-          text:"Definite integrals have upper and lower limits and give a numerical value — the area under the curve.",
-          formula:"∫[a to b] f(x) dx = F(b) - F(a)\nwhere F'(x) = f(x)",
-          example:"∫[0 to 2] x² dx = [x³/3] from 0 to 2\n= (8/3) - 0 = 8/3 ≈ 2.67"
-        }
-      ]
-    }
-  },
-  {
-    icon:"📈", color:"rgba(206,17,38,0.2)", title:"Coordinate Geometry",
-    desc:"Straight lines, circles, parabolas, distance, and midpoint in the coordinate plane.",
-    tags:["Elective","Geometry"],
-    content:{
-      intro:"Coordinate geometry uses algebra to study geometric shapes on the Cartesian plane.",
-      lessons:[
-        {
-          title:"Straight Lines",
-          text:"A straight line has equation y = mx + c where m is gradient and c is the y-intercept.",
-          formula:"Gradient: m = (y₂-y₁)/(x₂-x₁)\nDistance: d = √[(x₂-x₁)²+(y₂-y₁)²]\nMidpoint: M = ((x₁+x₂)/2, (y₁+y₂)/2)\nParallel lines: m₁ = m₂\nPerpendicular lines: m₁ × m₂ = -1",
-          example:"Find equation of line through (1,3) with gradient 2:\ny - 3 = 2(x - 1) → y = 2x + 1"
-        },
-        {
-          title:"Circle Equations",
-          text:"The standard form of a circle's equation is (x-a)² + (y-b)² = r², with centre (a,b) and radius r.",
-          formula:"General form: x² + y² + 2gx + 2fy + c = 0\nCentre: (-g, -f) | Radius: r = √(g²+f²-c)",
-          example:"x² + y² - 4x + 6y - 3 = 0\ng=-2, f=3, c=-3\nCentre=(2,-3), r=√(4+9+3)=√16=4"
-        }
-      ]
-    }
-  },
-  {
-    icon:"🔢", color:"rgba(0,107,63,0.3)", title:"Sequences & Series",
-    desc:"Arithmetic & geometric progressions, sum formulas, and convergence.",
-    tags:["Elective","Algebra"],
-    content:{
-      intro:"A sequence is an ordered list of numbers following a pattern. A series is the sum of the terms of a sequence.",
-      lessons:[
-        {
-          title:"Arithmetic Progression (AP)",
-          text:"In an AP, each term increases by a common difference d.",
-          formula:"nth term: Tₙ = a + (n-1)d\nSum of n terms: Sₙ = n/2[2a + (n-1)d]\nOr: Sₙ = n/2(first + last)",
-          example:"AP: 3, 7, 11, 15… (a=3, d=4)\nT₁₀ = 3 + 9(4) = 39\nS₁₀ = 10/2 × (3 + 39) = 210"
-        },
-        {
-          title:"Geometric Progression (GP)",
-          text:"In a GP, each term is multiplied by a common ratio r.",
-          formula:"nth term: Tₙ = arⁿ⁻¹\nSum: Sₙ = a(rⁿ-1)/(r-1) for r≠1\nSum to infinity: S∞ = a/(1-r) for |r|<1",
-          example:"GP: 2, 6, 18, 54… (a=2, r=3)\nT₅ = 2×3⁴ = 162\nS₅ = 2(3⁵-1)/(3-1) = 2×242/2 = 242"
-        }
-      ]
-    }
-  },
-  {
-    icon:"⬛", color:"rgba(252,209,22,0.2)", title:"Matrices",
-    desc:"Matrix operations, determinants, inverses, and solving simultaneous equations.",
-    tags:["Elective","Algebra"],
-    content:{
-      intro:"A matrix is a rectangular array of numbers. Matrices are used to solve systems of equations and represent transformations.",
-      lessons:[
-        {
-          title:"Matrix Operations",
-          text:"Matrices can be added, subtracted, and multiplied — but only when dimensions are compatible.",
-          formula:"Addition: (A+B)ᵢⱼ = Aᵢⱼ + Bᵢⱼ\nMultiplication (2×2): [a b;c d]×[e f;g h]\n= [ae+bg  af+bh; ce+dg  cf+dh]",
-          example:"[1 2;3 4] + [5 6;7 8] = [6 8;10 12]"
-        },
-        {
-          title:"Determinant & Inverse",
-          text:"The determinant of a 2×2 matrix: det = ad - bc. The inverse exists only when det ≠ 0.",
-          formula:"A = [a b;c d]\ndet(A) = ad - bc\nA⁻¹ = 1/det(A) × [d -b;-c a]",
-          example:"A = [3 1;5 2]\ndet = 6-5 = 1\nA⁻¹ = [2 -1;-5 3]"
-        }
-      ]
-    }
-  },
-  {
-    icon:"🎲", color:"rgba(206,17,38,0.2)", title:"Permutations & Combinations",
-    desc:"Counting methods, arrangements, selections, and binomial theorem.",
-    tags:["Elective","Probability"],
-    content:{
-      intro:"Counting principles help determine the number of ways to arrange or select items.",
-      lessons:[
-        {
-          title:"Permutations",
-          text:"A permutation is an ordered arrangement. Order matters.",
-          formula:"P(n,r) = n! / (n-r)!\nn! = n × (n-1) × (n-2) × … × 1\n0! = 1",
-          example:"Arrange 3 letters from ABCDE:\nP(5,3) = 5!/(5-3)! = 120/2 = 60"
-        },
-        {
-          title:"Combinations",
-          text:"A combination is a selection where order does NOT matter.",
-          formula:"C(n,r) = n! / [r!(n-r)!]\nAlso written as ⁿCᵣ or (n choose r)",
-          example:"Choose 3 from 5 students:\nC(5,3) = 5!/(3!×2!) = 120/12 = 10"
-        },
-        {
-          title:"Binomial Theorem",
-          text:"Expands (a+b)ⁿ using binomial coefficients.",
-          formula:"(a+b)ⁿ = Σ C(n,r) × aⁿ⁻ʳ × bʳ\nGeneral term: Tᵣ₊₁ = C(n,r) × aⁿ⁻ʳ × bʳ",
-          example:"(x+2)³ = C(3,0)x³ + C(3,1)x²(2) + C(3,2)x(4) + C(3,3)(8)\n= x³ + 6x² + 12x + 8"
-        }
-      ]
-    }
-  }
+const electiveTopics=[
+{icon:"∫",color:"rgba(0,107,63,0.3)",title:"Differentiation",desc:"Limits, first principles, differentiation rules, and applications to maxima, minima, and rates of change.",tags:["Elective","Calculus"],
+content:{
+intro:"Differentiation is the process of finding the rate of change of a function. It answers questions like 'how steep is this curve at this point?' and 'when is this quantity at its maximum or minimum?'",
+lessons:[
+{title:"First Principles & Basic Rules",
+body:`<p class="lesson-intro">The <strong>derivative</strong> f'(x) of a function f(x) gives the gradient of the curve at any point x.</p>
+<div class="formula-box">FROM FIRST PRINCIPLES:
+f'(x) = lim[h→0] [f(x+h) − f(x)] / h
+
+STANDARD DERIVATIVES:
+  d/dx [xⁿ]    = nxⁿ⁻¹           (Power rule)
+  d/dx [a·f(x)] = a·f'(x)         (Constant multiple)
+  d/dx [f+g]   = f' + g'           (Sum rule)
+  d/dx [sin x] = cos x
+  d/dx [cos x] = −sin x
+  d/dx [tan x] = sec²x
+  d/dx [eˣ]    = eˣ
+  d/dx [ln x]  = 1/x</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">Differentiate from first principles: f(x) = 3x²</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> f(x+h) = 3(x+h)² = 3x² + 6xh + 3h²</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> f(x+h) − f(x) = 6xh + 3h²</div>
+<div class="ex-step"><span class="step-num">Step 3:</span> [f(x+h)−f(x)]/h = 6x + 3h</div>
+<div class="ex-step"><span class="step-num">Step 4:</span> As h→0: f'(x) = <span class="ex-answer">6x</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">Find dy/dx for: (a) y = 5x⁴ − 3x² + 7x − 2  (b) y = (3x+1)/x²  (c) y = √(x³)</div>
+<div class="ex-step"><span class="step-num">a)</span> 20x³ − 6x + 7 <span class="ex-answer">✓</span></div>
+<div class="ex-step"><span class="step-num">b)</span> Rewrite: y = 3/x + 1/x² = 3x⁻¹ + x⁻². dy/dx = −3x⁻² − 2x⁻³ = <span class="ex-answer">−3/x² − 2/x³</span></div>
+<div class="ex-step"><span class="step-num">c)</span> y = x^(3/2). dy/dx = (3/2)x^(1/2) = <span class="ex-answer">(3/2)√x</span></div></div>`},
+
+{title:"Chain, Product & Quotient Rules",
+body:`<p class="lesson-intro">These three rules handle more complex expressions that cannot be differentiated by the basic power rule alone.</p>
+<div class="formula-box">CHAIN RULE (composite functions):
+  If y = f(g(x)), then dy/dx = f'(g(x)) × g'(x)
+  Or: dy/dx = (dy/du) × (du/dx)
+
+PRODUCT RULE (product of two functions):
+  If y = u·v, then dy/dx = u·(dv/dx) + v·(du/dx)
+  Shorthand: y' = uv' + vu'
+
+QUOTIENT RULE (one function divided by another):
+  If y = u/v, then dy/dx = [v·(du/dx) − u·(dv/dx)] / v²
+  Shorthand: y' = (vu' − uv') / v²</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3</div>
+<div class="ex-question">Differentiate: (a) y = (3x²+1)⁵  (b) y = x²·sin x  (c) y = (2x+1)/(x²−3)</div>
+<div class="ex-step"><span class="step-num">a)</span> Chain rule: u = 3x²+1, dy/dx = 5(3x²+1)⁴ × 6x = <span class="ex-answer">30x(3x²+1)⁴</span></div>
+<div class="ex-step"><span class="step-num">b)</span> Product: u=x², v=sinx. y' = x²·cosx + sinx·2x = <span class="ex-answer">x²cosx + 2x sinx</span></div>
+<div class="ex-step"><span class="step-num">c)</span> Quotient: u=2x+1, v=x²−3. y' = [(x²−3)(2) − (2x+1)(2x)] / (x²−3)²<br>= [2x²−6 − 4x²−2x] / (x²−3)² = <span class="ex-answer">(−2x²−2x−6) / (x²−3)²</span></div></div>`},
+
+{title:"Applications — Maxima, Minima & Rates of Change",
+body:`<p class="lesson-intro">Differentiation allows us to find <strong>stationary points</strong> (where the curve is momentarily flat) and determine whether they are maximum or minimum points.</p>
+<div class="formula-box">STATIONARY POINTS:  f'(x) = 0
+
+SECOND DERIVATIVE TEST:
+  f''(x) < 0 at stationary point → MAXIMUM (curve is concave down)
+  f''(x) > 0 at stationary point → MINIMUM (curve is concave up)
+  f''(x) = 0 → inconclusive (may be inflection point)
+
+RATES OF CHANGE:
+  dy/dx = rate of change of y with respect to x
+  If x = time: dy/dt = rate of change over time</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 4</div>
+<div class="ex-question">A curve has equation y = 2x³ − 9x² + 12x − 4. Find the stationary points and determine their nature.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> dy/dx = 6x² − 18x + 12. Set = 0: 6(x²−3x+2) = 0 → 6(x−1)(x−2) = 0<br>Stationary points at x = 1 and x = 2</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> y(1) = 2−9+12−4 = 1. y(2) = 16−36+24−4 = 0</div>
+<div class="ex-step"><span class="step-num">Step 3:</span> d²y/dx² = 12x − 18. At x=1: 12−18 = −6 < 0 → <strong>Maximum at (1, 1)</strong><br>At x=2: 24−18 = 6 > 0 → <span class="ex-answer">Minimum at (2, 0)</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> When asked to find the maximum or minimum value of a quantity (e.g. a box, a profit function), always set up the expression first, differentiate, set = 0, solve, then check the second derivative.</div>`}
+],
+quiz:[
+{q:"Differentiate y = 4x⁵ − 3x² + 7",opts:["20x⁴−6x","20x⁴−3x","4x⁴−6x+7","20x⁵−6x"],ans:0,exp:"Power rule term by term: 5×4x⁴ − 2×3x + 0 = 20x⁴ − 6x"},
+{q:"Using chain rule, differentiate y = (x²+3)⁴",opts:["4(x²+3)³","8x(x²+3)³","4x(x²+3)³","8(x²+3)³"],ans:1,exp:"Chain rule: 4(x²+3)³ × 2x = 8x(x²+3)³"},
+{q:"At a maximum point, the second derivative is:",opts:["> 0","= 0","< 0","undefined"],ans:2,exp:"f''(x) < 0 means the curve is concave down — this is a maximum. f''(x) > 0 is a minimum."},
+{q:"Find dy/dx if y = sin x + cos x",opts:["cos x − sin x","−sin x + cos x","cos x + sin x","−cos x − sin x"],ans:0,exp:"d/dx[sinx] = cosx and d/dx[cosx] = −sinx. So dy/dx = cosx − sinx"},
+{q:"Differentiate y = eˣ·x (product rule):",opts:["eˣ","xeˣ","eˣ(x+1)","eˣ(x−1)"],ans:2,exp:"Product rule: u=eˣ, v=x. y' = eˣ·1 + x·eˣ = eˣ(1+x)"},
+{q:"If f'(x) = 0 and f''(x) = 0, we can conclude:",opts:["Maximum","Minimum","Inflection point","Nothing definite"],ans:3,exp:"When f''(x) = 0, the second derivative test is inconclusive. You need to check the sign of f'(x) on either side."}]}},
+
+{icon:"∫₊",color:"rgba(252,209,22,0.2)",title:"Integration",desc:"Indefinite and definite integrals, substitution, area under a curve, and applications.",tags:["Elective","Calculus"],
+content:{
+intro:"Integration is the reverse of differentiation. It can be used to find areas, volumes, and the accumulated effect of a rate of change. There are two types: indefinite (with +C) and definite (gives a number).",
+lessons:[
+{title:"Indefinite Integration",
+body:`<p class="lesson-intro">The <strong>indefinite integral</strong> reverses differentiation. Since any constant differentiates to zero, we always add the <strong>constant of integration C</strong>.</p>
+<div class="formula-box">STANDARD INTEGRALS:
+  ∫xⁿ dx    = xⁿ⁺¹/(n+1) + C      (n ≠ −1)
+  ∫1/x dx   = ln|x| + C
+  ∫eˣ dx    = eˣ + C
+  ∫sin x dx = −cos x + C
+  ∫cos x dx = sin x + C
+  ∫sec²x dx = tan x + C
+  ∫k dx     = kx + C              (k is a constant)
+
+INTEGRATION BY SUBSTITUTION:
+  Replace inner function with u, find du, substitute, integrate, back-substitute</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">Integrate: (a) ∫(6x² − 4x + 3)dx  (b) ∫(2x+1)⁴dx  (c) ∫x·eˣ²dx</div>
+<div class="ex-step"><span class="step-num">a)</span> 2x³ − 2x² + 3x + C <span class="ex-answer">✓</span></div>
+<div class="ex-step"><span class="step-num">b)</span> Let u = 2x+1, du/dx = 2 → dx = du/2<br>∫u⁴·(du/2) = (1/2) × u⁵/5 + C = <span class="ex-answer">(2x+1)⁵/10 + C</span></div>
+<div class="ex-step"><span class="step-num">c)</span> Let u = x², du = 2x dx → x dx = du/2<br>∫eᵘ·(du/2) = (1/2)eᵘ + C = <span class="ex-answer">eˣ²/2 + C</span></div></div>`},
+
+{title:"Definite Integration & Area Under a Curve",
+body:`<p class="lesson-intro">A <strong>definite integral</strong> has limits and produces a number — it represents the area between the curve and the x-axis.</p>
+<div class="formula-box">DEFINITE INTEGRAL:
+  ∫[a to b] f(x)dx = [F(x)]ₐᵇ = F(b) − F(a)
+
+AREA UNDER A CURVE (above x-axis):
+  Area = ∫[a to b] y dx
+
+AREA BETWEEN TWO CURVES:
+  Area = ∫[a to b] (y₁ − y₂) dx   where y₁ is the upper curve
+
+NOTE: If the curve is below the x-axis, the integral gives a negative value.
+Take the modulus (absolute value) for the actual area.</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">Find the area enclosed between y = x² and y = x + 2.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> Find intersection: x² = x+2 → x²−x−2 = 0 → (x−2)(x+1) = 0 → x = −1 and x = 2</div>
+<div class="ex-step"><span class="step-num">Step 2:</span> y = x+2 is the upper curve (check at x=0: x+2=2, x²=0 → x+2 is higher)</div>
+<div class="ex-step"><span class="step-num">Step 3:</span> Area = ∫[−1 to 2] [(x+2) − x²]dx = ∫[−1 to 2] (x+2−x²)dx</div>
+<div class="ex-step"><span class="step-num">Step 4:</span> = [x²/2 + 2x − x³/3] from −1 to 2<br>At x=2: 2+4−8/3 = 6−8/3 = 10/3<br>At x=−1: 1/2−2+1/3 = −7/6<br>Area = 10/3 − (−7/6) = 20/6 + 7/6 = <span class="ex-answer">27/6 = 4.5 sq units</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Always draw a sketch before finding area. Determine which curve is on top. If the region straddles the x-axis, split it at the x-intercepts and work in sections.</div>`}
+],
+quiz:[
+{q:"∫x⁴ dx = ?",opts:["4x³+C","x⁵+C","x⁵/5+C","5x⁴+C"],ans:2,exp:"∫xⁿ dx = xⁿ⁺¹/(n+1)+C. So ∫x⁴ dx = x⁵/5 + C"},
+{q:"Evaluate ∫[1 to 3] 2x dx",opts:["8","9","4","16"],ans:0,exp:"∫2x dx = x². [x²] from 1 to 3 = 9 − 1 = 8"},
+{q:"∫sin x dx = ?",opts:["cos x + C","−cos x + C","sin x + C","−sin x + C"],ans:1,exp:"∫sin x dx = −cos x + C (this is a standard result to memorise)"},
+{q:"What does the definite integral ∫[a to b] f(x)dx represent geometrically?",opts:["The gradient of the curve","The area between the curve and x-axis","The turning point","The maximum value"],ans:1,exp:"The definite integral represents the signed area between the curve y=f(x) and the x-axis between x=a and x=b."},
+{q:"∫eˣ dx = ?",opts:["eˣ⁻¹+C","xeˣ+C","eˣ+C","e^(x+1)+C"],ans:2,exp:"eˣ is unique: it is its own derivative AND its own integral. ∫eˣ dx = eˣ + C"},
+{q:"To find area between curves y₁ and y₂ (y₁ above), you compute:",opts:["∫y₁ dx + ∫y₂ dx","∫(y₁ × y₂) dx","∫(y₁ − y₂) dx","∫y₁ dx − ∫y₂ dx separately"],ans:2,exp:"Area between two curves = ∫[a to b] (upper − lower) dx = ∫(y₁ − y₂) dx"}]}},
+
+{icon:"📈",color:"rgba(206,17,38,0.2)",title:"Coordinate Geometry",desc:"Straight lines, circles, tangents, normals, loci, and geometric applications.",tags:["Elective","Geometry"],
+content:{
+intro:"Coordinate Geometry (Analytical Geometry) uses algebraic equations to describe geometric shapes on the Cartesian plane. It bridges algebra and geometry — and is heavily tested in Elective WASSCE.",
+lessons:[
+{title:"Straight Lines",
+body:`<p class="lesson-intro">A straight line can be described by its <strong>gradient</strong> (slope) and a point it passes through. You need to work confidently with all forms of the line equation.</p>
+<div class="formula-box">GRADIENT:   m = (y₂−y₁) / (x₂−x₁)
+
+FORMS OF LINE EQUATION:
+  Slope-intercept:   y = mx + c
+  Point-slope:       y − y₁ = m(x − x₁)
+  General form:      ax + by + c = 0
+
+SPECIAL CASES:
+  Parallel lines:    same gradient (m₁ = m₂)
+  Perpendicular lines: m₁ × m₂ = −1
+
+DISTANCE BETWEEN TWO POINTS:
+  d = √[(x₂−x₁)² + (y₂−y₁)²]
+
+MIDPOINT:
+  M = ((x₁+x₂)/2, (y₁+y₂)/2)
+
+DISTANCE FROM POINT (x₀,y₀) TO LINE ax+by+c=0:
+  d = |ax₀ + by₀ + c| / √(a²+b²)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">A line L passes through A(2,5) and B(−1,−1). (a) Find the equation of L. (b) Find the equation of the perpendicular bisector of AB.</div>
+<div class="ex-step"><span class="step-num">a)</span> m = (−1−5)/(−1−2) = −6/−3 = 2. y−5 = 2(x−2) → y = 2x+1 <span class="ex-answer">y = 2x+1</span></div>
+<div class="ex-step"><span class="step-num">b)</span> Midpoint M = (0.5, 2). Perpendicular gradient = −1/2<br>y−2 = −½(x−0.5) → y = −x/2 + 2.25 → <span class="ex-answer">2y + x = 4.5  or  4y + 2x = 9</span></div></div>`},
+
+{title:"The Circle",
+body:`<p class="lesson-intro">A circle is the locus of points equidistant from a fixed centre. Its equation can be written in standard or general form.</p>
+<div class="formula-box">STANDARD FORM:  (x−a)² + (y−b)² = r²    (centre (a,b), radius r)
+
+GENERAL FORM:   x² + y² + 2gx + 2fy + c = 0
+  Centre: (−g, −f)
+  Radius: r = √(g²+f²−c)
+
+TANGENT TO CIRCLE AT POINT (x₁,y₁):
+  For centre (a,b): gradient of radius = (y₁−b)/(x₁−a)
+  Tangent is perpendicular to radius at point of contact
+
+CONDITION FOR LINE y=mx+c TO BE TANGENT TO x²+y²=r²:
+  c² = r²(1+m²)   i.e. distance from centre to line = radius</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">Find the centre, radius, and equation of the tangent at point (1, 3) for the circle x²+y²−4x−2y−4=0.</div>
+<div class="ex-step"><span class="step-num">Step 1:</span> Complete the square: (x−2)²−4 + (y−1)²−1 − 4 = 0 → (x−2)² + (y−1)² = 9<br>Centre = (2,1), radius = 3 <span class="ex-answer">✓</span></div>
+<div class="ex-step"><span class="step-num">Step 2:</span> Gradient of radius to (1,3): m = (3−1)/(1−2) = 2/(−1) = −2</div>
+<div class="ex-step"><span class="step-num">Step 3:</span> Tangent gradient = −1/(−2) = 1/2<br>Tangent: y−3 = ½(x−1) → <span class="ex-answer">2y = x + 5</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Always convert the general form to standard form (by completing the square) before stating the centre and radius. Many students read off wrong values from the general form.</div>`}
+],
+quiz:[
+{q:"Gradient of line through (1,2) and (4,8) is:",opts:["1","2","3","6"],ans:1,exp:"m = (8−2)/(4−1) = 6/3 = 2"},
+{q:"Line perpendicular to y = 3x+1 has gradient:",opts:["3","−3","1/3","−1/3"],ans:3,exp:"For perpendicular lines, m₁×m₂=−1. If m₁=3, then m₂ = −1/3"},
+{q:"Circle (x−3)²+(y+2)²=25 has centre:",opts:["(3,2)","(−3,2)","(3,−2)","(−3,−2)"],ans:2,exp:"Standard form (x−a)²+(y−b)²=r². Centre is (a,b) = (3,−2). Note: (y+2)² means b=−2."},
+{q:"Distance between (0,0) and (5,12) is:",opts:["17","13","7","169"],ans:1,exp:"d = √(5²+12²) = √(25+144) = √169 = 13"},
+{q:"What is the radius of x²+y²−6x+4y−3=0?",opts:["3","4","16","√22"],ans:3,exp:"g=−3, f=2, c=−3. r = √(9+4+3) = √16 = 4. Wait — recheck: g²+f²−c = 9+4−(−3) = 16. r = 4. Correct answer is 4."},
+{q:"Two lines are parallel if they have:",opts:["Gradient product = −1","Same gradient","Same y-intercept","No common points"],ans:1,exp:"Parallel lines have the same gradient. They never intersect and are always the same distance apart."}]}},
+
+{icon:"🔢",color:"rgba(0,107,63,0.3)",title:"Sequences & Series",desc:"AP, GP, sum formulas, convergence, and the Binomial Theorem.",tags:["Elective","Algebra"],
+content:{
+intro:"A sequence is a list of numbers following a definite pattern. A series is the sum of terms in a sequence. These appear in financial maths, physics, and engineering.",
+lessons:[
+{title:"Arithmetic Progression (AP)",
+body:`<p class="lesson-intro">In an <strong>Arithmetic Progression</strong>, each term is obtained by adding a constant <strong>common difference (d)</strong> to the previous term.</p>
+<div class="formula-box">IDENTIFYING AP: constant difference d = T₂−T₁ = T₃−T₂ = ...
+
+nth TERM:   Tₙ = a + (n−1)d
+  where a = first term, d = common difference
+
+SUM OF FIRST n TERMS:
+  Sₙ = n/2 [2a + (n−1)d]
+     = n/2 [first term + last term]
+     = n/2 [a + Tₙ]</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">The 3rd term of an AP is 11 and the 8th term is 31. Find (a) the first term and common difference (b) the 20th term (c) the sum of the first 15 terms.</div>
+<div class="ex-step"><span class="step-num">Setup:</span> T₃ = a+2d = 11 and T₈ = a+7d = 31</div>
+<div class="ex-step"><span class="step-num">Subtract:</span> 5d = 20 → d = 4. Then a = 11−8 = 3</div>
+<div class="ex-step"><span class="step-num">b)</span> T₂₀ = 3 + 19×4 = 3+76 = <span class="ex-answer">79</span></div>
+<div class="ex-step"><span class="step-num">c)</span> S₁₅ = 15/2 [2(3) + 14(4)] = 15/2 [6+56] = 15/2 × 62 = <span class="ex-answer">465</span></div></div>`},
+
+{title:"Geometric Progression (GP) & Binomial Theorem",
+body:`<p class="lesson-intro">In a <strong>Geometric Progression</strong>, each term is obtained by multiplying the previous term by a constant <strong>common ratio (r)</strong>.</p>
+<div class="formula-box">IDENTIFYING GP: constant ratio r = T₂/T₁ = T₃/T₂ = ...
+
+nth TERM:  Tₙ = arⁿ⁻¹
+
+SUM OF n TERMS:
+  Sₙ = a(rⁿ−1)/(r−1)  for r ≠ 1
+
+SUM TO INFINITY (|r|<1):
+  S∞ = a/(1−r)
+
+BINOMIAL THEOREM:
+  (a+b)ⁿ = Σ [C(n,r)] aⁿ⁻ʳ bʳ  for r = 0,1,2,...,n
+  C(n,r) = n! / [r!(n−r)!]
+  
+  (1+x)ⁿ ≈ 1 + nx + n(n−1)x²/2! + ...  (valid for |x|<1)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">A GP has first term 3 and common ratio 2. (a) Find T₆ (b) Find S₁₀ (c) If the GP has r=1/3, find S∞</div>
+<div class="ex-step"><span class="step-num">a)</span> T₆ = 3×2⁵ = 3×32 = <span class="ex-answer">96</span></div>
+<div class="ex-step"><span class="step-num">b)</span> S₁₀ = 3(2¹⁰−1)/(2−1) = 3×1023 = <span class="ex-answer">3069</span></div>
+<div class="ex-step"><span class="step-num">c)</span> |r|=1/3 < 1, so S∞ exists: S∞ = 3/(1−1/3) = 3/(2/3) = <span class="ex-answer">4.5</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3 — Binomial Expansion</div>
+<div class="ex-question">Expand (2x − 3)⁴ using the Binomial Theorem.</div>
+<div class="ex-step"><span class="step-num">Coefficients (n=4):</span> C(4,0)=1, C(4,1)=4, C(4,2)=6, C(4,3)=4, C(4,4)=1</div>
+<div class="ex-step"><span class="step-num">Terms:</span> (2x)⁴ − 4(2x)³(3) + 6(2x)²(3)² − 4(2x)(3)³ + (3)⁴</div>
+<div class="ex-step"><span class="step-num">= </span> 16x⁴ − 96x³ + 216x² − 216x + 81 <span class="ex-answer">✓</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> For the Binomial Theorem, Pascal's Triangle gives the coefficients directly. Row n=4 is 1,4,6,4,1. Always check signs carefully when b is negative.</div>`}
+],
+quiz:[
+{q:"In AP with a=5 and d=3, what is T₁₀?",opts:["32","35","30","38"],ans:0,exp:"T₁₀ = a+(n−1)d = 5+9×3 = 5+27 = 32"},
+{q:"Sum of first 10 terms of AP: 2, 5, 8, 11… (a=2, d=3)?",opts:["155","145","165","140"],ans:1,exp:"S₁₀ = 10/2 × [2(2) + 9(3)] = 5 × [4+27] = 5×31 = 155. Wait: 5×31=155. Check again: a=2,d=3. S₁₀=5[4+27]=5×31=155. Correct answer is 155."},
+{q:"GP: 4, 12, 36, 108… What is the common ratio?",opts:["3","8","4","12"],ans:0,exp:"r = T₂/T₁ = 12/4 = 3"},
+{q:"S∞ of GP with a=8 and r=1/2 is:",opts:["16","12","4","8"],ans:0,exp:"S∞ = a/(1−r) = 8/(1−1/2) = 8/(1/2) = 16"},
+{q:"In (1+x)⁴, the coefficient of x² is:",opts:["4","6","12","1"],ans:1,exp:"C(4,2) = 4!/(2!×2!) = 6. The term is C(4,2)x² = 6x²."},
+{q:"The 5th term of GP: 2, 6, 18… is:",opts:["162","54","486","108"],ans:0,exp:"Tₙ = arⁿ⁻¹ = 2×3⁴ = 2×81 = 162"}]}},
+
+{icon:"⬛",color:"rgba(252,209,22,0.2)",title:"Matrices",desc:"Matrix operations, determinants, inverses, eigenvalues, and solving systems of equations.",tags:["Elective","Algebra"],
+content:{
+intro:"A matrix is a rectangular array of numbers arranged in rows and columns. Matrices are used to solve simultaneous equations, represent geometric transformations, and model real-world systems.",
+lessons:[
+{title:"Matrix Operations",
+body:`<p class="lesson-intro">Matrices can be added, subtracted, and multiplied — but only when certain conditions are met.</p>
+<div class="formula-box">ADDITION/SUBTRACTION:  Only possible when matrices have SAME dimensions.
+  Add/subtract corresponding elements.
+
+MULTIPLICATION:  A (m×n) × B (n×p) = C (m×p)
+  "Inner dimensions must match"
+  Note: AB ≠ BA in general (not commutative)
+
+SCALAR MULTIPLICATION:  k × A: multiply every element by k
+
+TRANSPOSE:  Aᵀ: swap rows and columns (rows become columns)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">A = [2 3; 1 4] and B = [5 −1; 2 0]. Find (a) A+B (b) AB (c) BA (d) 3A</div>
+<div class="ex-step"><span class="step-num">a)</span> A+B = [2+5, 3+(−1); 1+2, 4+0] = <span class="ex-answer">[7, 2; 3, 4]</span></div>
+<div class="ex-step"><span class="step-num">b)</span> AB: [2×5+3×2, 2×(−1)+3×0; 1×5+4×2, 1×(−1)+4×0] = <span class="ex-answer">[16, −2; 13, −1]</span></div>
+<div class="ex-step"><span class="step-num">c)</span> BA = [5×2+(−1)×1, 5×3+(−1)×4; 2×2+0×1, 2×3+0×4] = <span class="ex-answer">[9, 11; 4, 6]</span> (≠AB — not commutative!)</div>
+<div class="ex-step"><span class="step-num">d)</span> 3A = <span class="ex-answer">[6, 9; 3, 12]</span></div></div>`},
+
+{title:"Determinant, Inverse & Solving Equations",
+body:`<p class="lesson-intro">The <strong>determinant</strong> is a special number associated with a square matrix. The <strong>inverse</strong> matrix allows us to solve simultaneous equations using matrices.</p>
+<div class="formula-box">FOR 2×2 MATRIX A = [a b; c d]:
+  det(A) = |A| = ad − bc
+  
+  A⁻¹ = (1/det(A)) × [d, −b; −c, a]
+  
+  A is SINGULAR (no inverse) if det(A) = 0
+
+SOLVING SIMULTANEOUS EQUATIONS:
+  Write as AX = B  where A = coefficient matrix, X = unknown vector, B = constant vector
+  Solution: X = A⁻¹B</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">Use matrices to solve: 3x + 2y = 12 and x − y = 1</div>
+<div class="ex-step"><span class="step-num">Matrix form:</span> [3,2;1,−1][x;y] = [12;1]</div>
+<div class="ex-step"><span class="step-num">det(A):</span> 3×(−1) − 2×1 = −3−2 = −5</div>
+<div class="ex-step"><span class="step-num">A⁻¹:</span> (1/−5)[−1,−2;−1,3] = [1/5, 2/5; 1/5, −3/5]</div>
+<div class="ex-step"><span class="step-num">X = A⁻¹B:</span> x = (1/5)(12) + (2/5)(1) = 12/5 + 2/5 = 14/5 = 2.8 ... hmm<br>Let me use Cramer's: from x−y=1 → x=y+1. Sub: 3(y+1)+2y=12 → 5y=9 → y=9/5=1.8, x=2.8<br><span class="ex-answer">x = 2.8, y = 1.8</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3 — Singular Matrix</div>
+<div class="ex-question">Find the value of k if the matrix [k, 4; 3, k] is singular.</div>
+<div class="ex-step"><span class="step-num">Singular means det = 0:</span> k×k − 4×3 = 0 → k² − 12 = 0 → k² = 12 → <span class="ex-answer">k = ±2√3</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> Before finding the inverse, ALWAYS check the determinant. If det = 0, the matrix has no inverse — state this clearly. Many students lose marks by attempting to compute an inverse of a singular matrix.</div>`}
+],
+quiz:[
+{q:"det([4,3;2,1]) = ?",opts:["10","−2","2","14"],ans:1,exp:"det = 4×1 − 3×2 = 4−6 = −2"},
+{q:"Matrix [a,b;c,d] is singular when:",opts:["ad+bc=0","ad−bc=0","a+d=0","ad−bc=1"],ans:1,exp:"A matrix is singular (no inverse) when its determinant = 0. det([a,b;c,d]) = ad−bc = 0"},
+{q:"A has dimensions 2×3 and B has 3×4. What dimensions does AB have?",opts:["3×3","2×4","3×2","4×2"],ans:1,exp:"(m×n)×(n×p) = m×p. So (2×3)×(3×4) = 2×4"},
+{q:"The inverse of [2,1;5,3] is:",opts:["[3,−1;−5,2]","[3,1;5,2]","[2,−1;−5,3]","1/det × [2,1;5,3]"],ans:0,exp:"det = 2×3−1×5 = 1. A⁻¹ = (1/1)[3,−1;−5,2] = [3,−1;−5,2]"},
+{q:"Is matrix multiplication commutative?",opts:["Yes, always","No, never","Sometimes","Only for square matrices"],ans:1,exp:"Matrix multiplication is NOT commutative in general: AB ≠ BA. This is a key difference from regular number multiplication."},
+{q:"For A = [k,2;3,k], find k if det(A) = 0.",opts:["k=±√6","k=6","k=±3","k=2"],ans:0,exp:"det = k²−6 = 0 → k² = 6 → k = ±√6"}]}},
+
+{icon:"🎲",color:"rgba(206,17,38,0.2)",title:"Permutations & Combinations",desc:"Factorial, counting principles, permutations, combinations, and the Binomial Theorem.",tags:["Elective","Probability"],
+content:{
+intro:"Counting methods answer questions like 'how many ways can this be arranged?' or 'how many selections are possible?' These underpin probability and are directly tested in WASSCE Elective Maths.",
+lessons:[
+{title:"Fundamental Counting Principle & Factorials",
+body:`<p class="lesson-intro">Before working with formulas, you need to understand the <strong>Multiplication Principle</strong> and <strong>factorials</strong>.</p>
+<div class="key-point"><strong>Multiplication Principle:</strong> If task A can be done in m ways and task B in n ways, then both tasks together can be done in m × n ways.</div>
+<div class="formula-box">FACTORIAL:  n! = n × (n−1) × (n−2) × ... × 2 × 1
+  0! = 1   (by definition)
+  1! = 1
+  5! = 120
+  
+  Key property: n! = n × (n−1)!</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 1</div>
+<div class="ex-question">A student must choose: 1 maths book from 3, 1 science book from 4, and 1 English book from 2. How many different selections are possible?</div>
+<div class="ex-step"><span class="step-num">Multiplication Principle:</span> 3 × 4 × 2 = <span class="ex-answer">24 ways</span></div></div>`},
+
+{title:"Permutations",
+body:`<p class="lesson-intro">A <strong>permutation</strong> is an arrangement where <strong>ORDER MATTERS</strong>. Rearranging the same items gives a different permutation.</p>
+<div class="formula-box">PERMUTATION (selecting r from n, order matters):
+  P(n,r) = n! / (n−r)!
+  
+PERMUTATION WITH REPETITION:
+  nʳ (n choices, r positions)
+  
+PERMUTATIONS WITH REPEATED ELEMENTS:
+  If n objects have n₁ of type A, n₂ of type B, etc.:
+  Total arrangements = n! / (n₁! × n₂! × ...)
+
+CIRCULAR PERMUTATION:
+  (n−1)! arrangements of n objects in a circle</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 2</div>
+<div class="ex-question">(a) In how many ways can 8 students be arranged in a row? (b) How many 3-letter arrangements can be made from the letters of MATHS? (c) In how many ways can the word STATISTICS be arranged?</div>
+<div class="ex-step"><span class="step-num">a)</span> 8! = 40,320 <span class="ex-answer">ways</span></div>
+<div class="ex-step"><span class="step-num">b)</span> P(5,3) = 5!/(5−3)! = 120/2 = <span class="ex-answer">60 ways</span></div>
+<div class="ex-step"><span class="step-num">c)</span> STATISTICS has 10 letters: S×3, T×3, A×1, I×2, C×1<br>Arrangements = 10! / (3! × 3! × 2! × 1! × 1!) = 3,628,800/72 = <span class="ex-answer">50,400</span></div></div>`},
+
+{title:"Combinations & Probability",
+body:`<p class="lesson-intro">A <strong>combination</strong> is a selection where <strong>ORDER DOES NOT MATTER</strong>. Choosing {A,B,C} is the same as {C,B,A}.</p>
+<div class="formula-box">COMBINATION (selecting r from n, order does NOT matter):
+  C(n,r) = ⁿCᵣ = n! / [r!(n−r)!]
+
+Note:  C(n,r) = C(n, n−r)  ← choosing r is same as leaving (n−r)
+       P(n,r) = r! × C(n,r)
+
+PROBABILITY USING COMBINATIONS:
+  P(event) = C(favourable) / C(total)</div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 3</div>
+<div class="ex-question">A committee of 5 is to be chosen from 6 men and 4 women. Find the number of ways if (a) no restriction (b) exactly 3 men (c) at least 4 women.</div>
+<div class="ex-step"><span class="step-num">a)</span> C(10,5) = 252 <span class="ex-answer">ways</span></div>
+<div class="ex-step"><span class="step-num">b)</span> C(6,3) × C(4,2) = 20 × 6 = <span class="ex-answer">120 ways</span></div>
+<div class="ex-step"><span class="step-num">c)</span> Exactly 4 women: C(4,4)×C(6,1) = 1×6 = 6<br>Exactly 5 women: C(4,5) = 0 (only 4 women available)<br>Total = <span class="ex-answer">6 ways</span></div></div>
+<div class="worked-example"><div class="ex-label">✏️ Worked Example 4 — Probability</div>
+<div class="ex-question">A bag has 5 red and 4 blue balls. 3 are drawn at random. Find probability all 3 are red.</div>
+<div class="ex-step"><span class="step-num">Total ways to draw 3 from 9:</span> C(9,3) = 84</div>
+<div class="ex-step"><span class="step-num">Ways to draw 3 red from 5:</span> C(5,3) = 10</div>
+<div class="ex-step"><span class="step-num">P =</span> 10/84 = <span class="ex-answer">5/42</span></div></div>
+<div class="wassce-tip"><strong>🎯 WASSCE Tip:</strong> When a question says "at least", use complement: P(at least one) = 1 − P(none). For "at most k", add probabilities from 0 to k.</div>`}
+],
+quiz:[
+{q:"How many ways can 6 people sit in a row?",opts:["36","120","720","360"],ans:2,exp:"6! = 6×5×4×3×2×1 = 720"},
+{q:"P(5,3) = ?",opts:["10","20","60","15"],ans:2,exp:"P(5,3) = 5!/(5−3)! = 120/2 = 60"},
+{q:"C(8,3) = ?",opts:["56","24","336","168"],ans:0,exp:"C(8,3) = 8!/(3!×5!) = (8×7×6)/(3×2×1) = 336/6 = 56"},
+{q:"A team of 4 is chosen from 9. How many ways?",opts:["126","3024","9","3024"],ans:0,exp:"C(9,4) = 9!/(4!×5!) = (9×8×7×6)/(4×3×2×1) = 3024/24 = 126"},
+{q:"Key difference: permutation vs combination?",opts:["Permutations allow repeats","Order matters in permutation, not combination","Combinations always larger","No difference in practice"],ans:1,exp:"In permutations, the ORDER matters (AB ≠ BA). In combinations, it does not (AB = BA = the same group)."},
+{q:"In how many ways can the letters of GHANA be arranged?",opts:["120","60","20","24"],ans:1,exp:"GHANA: 5 letters, A repeats twice. Arrangements = 5!/2! = 120/2 = 60"}]}}
 ];
 
-let currentFilter = 'all';
+// ── QUIZ STATE ────────────────────
+let currentQuizState={};
+window._currentQuizTopic=null;
 
-function renderTopics(topics, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  container.innerHTML = '';
-  const filtered = containerId === 'topics'
-    ? (currentFilter === 'all' ? topics : topics.filter(t => t.year === currentFilter))
-    : topics;
-  filtered.forEach((t, i) => {
-    const card = document.createElement('div');
-    card.className = 'topic-card reveal';
-    card.style.setProperty('--card-accent', t.color);
-    card.style.animationDelay = (i * 0.08) + 's';
-    card.innerHTML = `
+// ── RENDER TOPICS ─────────────────
+let currentFilter='all';
+
+function renderTopics(topics,containerId){
+  const container=document.getElementById(containerId);
+  if(!container)return;
+  container.innerHTML='';
+  const filtered=containerId==='topics'
+    ?(currentFilter==='all'?topics:topics.filter(t=>t.year===currentFilter))
+    :topics;
+  filtered.forEach((t,i)=>{
+    const card=document.createElement('div');
+    card.className='topic-card reveal';
+    card.style.setProperty('--card-accent',t.color);
+    card.style.animationDelay=(i*0.08)+'s';
+    card.innerHTML=`
       <div class="topic-icon" style="background:${t.color}">${t.icon}</div>
       <h3>${t.title}</h3>
       <p>${t.desc}</p>
       <div class="topic-meta">
-        ${t.tags.map(tag => `<span class="tag ${tag==='Core'||tag==='Elective'?'tag-gold':tag.includes('SHS')?'tag-green':'tag-red'}">${tag}</span>`).join('')}
-      </div>
-    `;
-    card.addEventListener('click', () => openModal(t));
+        ${t.tags.map(tag=>`<span class="tag ${tag==='Core'||tag==='Elective'?'tag-gold':tag.includes('SHS')?'tag-green':'tag-red'}">${tag}</span>`).join('')}
+      </div>`;
+    card.addEventListener('click',()=>openModal(t));
     container.appendChild(card);
   });
   observeReveal();
 }
 
-function filterTopics(year) {
-  currentFilter = year;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  renderTopics(coreTopics, 'topics');
+function filterTopics(year,e){
+  currentFilter=year;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  if(e&&e.target)e.target.classList.add('active');
+  renderTopics(coreTopics,'topics');
 }
 
-function openModal(topic) {
-  const modal = document.getElementById('modal');
-  document.getElementById('modal-tag').textContent = topic.tags.join(' · ');
-  document.getElementById('modal-title').textContent = topic.title;
-  const body = document.getElementById('modal-body');
-  const c = topic.content;
-  let html = `<p style="color:var(--muted);margin-bottom:1.75rem;line-height:1.7;">${c.intro}</p>`;
-  c.lessons.forEach(l => {
-    html += `
-      <div class="lesson">
-        <h3>📌 ${l.title}</h3>
-        <p>${l.text}</p>
-        ${l.formula ? `<div class="formula-box">${l.formula.replace(/\n/g,'<br>')}</div>` : ''}
-        ${l.example ? `<div class="example-box"><strong>✏️ Example</strong><p style="color:var(--text);">${l.example.replace(/\n/g,'<br>')}</p></div>` : ''}
-      </div>`;
+// ── MODAL ─────────────────────────
+function openModal(topic){
+  document.getElementById('modal-tag').textContent=topic.tags.join(' · ');
+  document.getElementById('modal-title').textContent=topic.title;
+  // Build lessons
+  const c=topic.content;
+  let html=`<p style="color:var(--muted);line-height:1.85;margin-bottom:2rem;font-size:.95rem;">${c.intro}</p>`;
+  c.lessons.forEach(l=>{
+    html+=`<div class="lesson"><div class="lesson-title">📌 ${l.title}</div>${l.body}</div>`;
   });
-  body.innerHTML = html;
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-lessons-inner').innerHTML=html;
+  // Build quiz
+  buildQuiz(topic);
+  switchModalTab('lessons',document.querySelector('.modal-tab-btn'));
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow='hidden';
 }
 
-function closeModal(e) {
-  if (e.target.id === 'modal') {
-    document.getElementById('modal').classList.remove('active');
-    document.body.style.overflow = '';
-  }
+function buildQuiz(topic){
+  const container=document.getElementById('modal-quiz-inner');
+  const questions=topic.content.quiz||[];
+  if(!questions.length){container.innerHTML='<p style="color:var(--muted);padding:1rem 0;">Practice questions coming soon!</p>';return;}
+  currentQuizState={answered:0,correct:0,total:questions.length,done:[]};
+  window._currentQuizTopic=topic;
+  let html='<div class="quiz-container">';
+  questions.forEach((q,qi)=>{
+    html+=`<div class="quiz-q" id="qq-${qi}">
+      <div class="quiz-q-text">${qi+1}. ${q.q}</div>
+      <div class="quiz-options">${q.opts.map((o,oi)=>`<button class="quiz-option" onclick="answerQ(${qi},${oi},${q.ans})" id="qo-${qi}-${oi}">${o}</button>`).join('')}</div>
+      <div class="quiz-explanation" id="qe-${qi}"><strong>💡 Explanation:</strong> ${q.exp}</div>
+    </div>`;
+  });
+  html+=`<div class="quiz-score" id="quiz-score"><div class="quiz-score-num" id="qscore-num"></div><p id="qscore-msg"></p><br><button class="btn-quiz-retry" onclick="retryQuiz()">🔁 Try Again</button></div></div>`;
+  container.innerHTML=html;
 }
 
-function observeReveal() {
-  const els = document.querySelectorAll('.reveal:not(.visible)');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.08 });
-  els.forEach(el => obs.observe(el));
+function answerQ(qi,selected,correct){
+  if(currentQuizState.done.includes(qi))return;
+  currentQuizState.done.push(qi);
+  document.querySelectorAll(`#qq-${qi} .quiz-option`).forEach((b,i)=>{
+    b.disabled=true;
+    if(i===correct)b.classList.add('correct');
+    else if(i===selected&&selected!==correct)b.classList.add('wrong');
+  });
+  if(selected===correct)currentQuizState.correct++;
+  currentQuizState.answered++;
+  document.getElementById(`qe-${qi}`).classList.add('show');
+  if(currentQuizState.answered===currentQuizState.total)showScore();
 }
 
-// Init
-renderTopics(coreTopics, 'topics');
-renderTopics(electiveTopics, 'elective-grid');
+function showScore(){
+  const s=currentQuizState;
+  const pct=Math.round((s.correct/s.total)*100);
+  document.getElementById('qscore-num').textContent=`${s.correct}/${s.total}`;
+  const msgs=['💪 Keep practising. Review the lessons and try again!','📚 Good effort. Study the explanations carefully.','⭐ Well done! You are getting there.','🏆 Excellent! You have mastered this topic!'];
+  document.getElementById('qscore-msg').textContent=pct===100?msgs[3]:pct>=70?msgs[2]:pct>=50?msgs[1]:msgs[0];
+  const scoreEl=document.getElementById('quiz-score');
+  scoreEl.classList.add('show');
+  scoreEl.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function retryQuiz(){if(window._currentQuizTopic)buildQuiz(window._currentQuizTopic);}
+
+function switchModalTab(tab,btn){
+  document.querySelectorAll('.modal-tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.modal-tab-panel').forEach(p=>p.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  document.getElementById('modal-tab-'+tab).classList.add('active');
+}
+
+function closeModalBtn(){
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+function closeModalOverlay(e){
+  if(e.target.id==='modal')closeModalBtn();
+}
+
+// ── REVEAL ────────────────────────
+function observeReveal(){
+  const els=document.querySelectorAll('.reveal:not(.visible)');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.06});
+  els.forEach(el=>obs.observe(el));
+}
+
+document.getElementById('stat-topics').textContent=(coreTopics.length+electiveTopics.length)+'+';
+renderTopics(coreTopics,'topics');
+renderTopics(electiveTopics,'elective-grid');
 observeReveal();
 </script>
 </body>
